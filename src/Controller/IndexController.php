@@ -43,4 +43,8 @@ class IndexController extends Controller
       'my_pager' => $pagerfanta,
       ]);
     }
+    /*
+     * @Route("/category/{id}/{page}", name="gabelle_show_paginated", requirements={"page" = "\d+"})
+     */
+     public function gigsByCategory($id,$page)
 }
