@@ -14,7 +14,13 @@ class GigsRepository extends ServiceEntityRepository
       return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'ASC')
             ->getQuery();
-
-
+    }
+    public function findPerCategory($cid)
+    {
+      return $this->createQueryBuilder('p')
+            ->where('p.category=:cid')
+            ->orderBy('p.id', 'ASC')
+            ->setParameter('cid',$cid)
+            ->getQuery();
     }
 }

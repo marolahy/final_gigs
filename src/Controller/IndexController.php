@@ -43,8 +43,17 @@ class IndexController extends Controller
       'my_pager' => $pagerfanta,
       ]);
     }
-    /*
-     * @Route("/category/{id}/{page}", name="gabelle_show_paginated", requirements={"page" = "\d+"})
+    /**
+     * @Route("/category/{id}", name="per_category")
      */
-     public function gigsByCategory($id,$page)
+     public function byCategory($id,Request $request)
+     {
+       $gigsRepository = $this->getDoctrine()->getRepository(Gigs::class);
+       $qb = $gigsRepository->findPerCategory($id);
+       $adapter = new DoctrineORMAdapter($qb);
+       $pagerfanta = new Pagerfanta($adapter);
+       return $this->render('index/allgigs.html.twig', [
+         'my_pager' => $pagerfanta,
+       ]);
+     }
 }
