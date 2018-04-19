@@ -24,6 +24,7 @@ easy_admin:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
                     - { property: 'name', css_class: 'large' }
+                    - { property: 'shortdescription', type:  'text',css_class: 'large'   }
                     - { property: 'description', type:  'ckeditor',css_class: 'large'   }
                     - { type: 'divider' }
                     - { property: 'category', type: 'easyadmin_autocomplete' }

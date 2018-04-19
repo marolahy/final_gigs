@@ -57,11 +57,14 @@ class IndexController extends Controller
        ]);
      }
      /**
-      * @Route("/gigs", name="gigs")
+      * @Route("/gigs/{id}", name="gigs")
       */
-     public function gigs()
+     public function gigs($id)
      {
+       $gigsRepository = $this->getDoctrine()->getRepository(Gigs::class);
+
        return $this->render('index/gigs.html.twig', [
+         'gigs'=>$gigsRepository->findOneBy(array('id'=>$id))
        ]);
      }
 }

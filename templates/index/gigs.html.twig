@@ -26,11 +26,11 @@
       <div class="container-fluid p-5">
         <div class="row">
           <div class="col-lg-8 mx-auto masthead-center">
-            <p class="text-faded pepper-title">SOCIAL MEDIA</p>
+            <p class="text-faded pepper-title">{{gigs.category}}</p>
             <h1>
-              Twitter Growth
+              {{gigs.name}}
             </h1>
-            <p>Grow your Twitter account with real & targeted followers.</p>
+            <p>{{gigs.shortdescription}}</p>
           </div>
 
           <div class="col-lg-4 mx-auto d-inline-block text-right my-auto masthead-center">
@@ -49,16 +49,16 @@
                       <!-- main slider carousel items -->
                       <div class="carousel-inner">
                           <div class="active item carousel-item" data-slide-number="0">
-                              <img src="img/carousel/image1.jpg" class="img-fluid w-100">
+                              <img src="/img/carousel/image1.jpg" class="img-fluid w-100">
                           </div>
                           <div class="item carousel-item" data-slide-number="1">
-                              <img src="img/carousel/image2.jpg" class="img-fluid img-fluid w-100">
+                              <img src="/img/carousel/image2.jpg" class="img-fluid img-fluid w-100">
                           </div>
                           <div class="item carousel-item" data-slide-number="2">
-                              <img src="img/carousel/image3.jpg" class="img-fluid img-fluid w-100">
+                              <img src="/img/carousel/image3.jpg" class="img-fluid img-fluid w-100">
                           </div>
                           <div class="item carousel-item" data-slide-number="3">
-                              <img src="img/carousel/image4.jpg" class="img-fluid img-fluid w-100">
+                              <img src="/img/carousel/image4.jpg" class="img-fluid img-fluid w-100">
                           </div>
 
                           <!--
@@ -100,31 +100,16 @@
 
             <div class="row">
               <div class="col-lg-8 col-md-12">
-                <h2 class="d-block">Grow your Twitter</h2>
+                <h2 class="d-block">{{gigs.name}}</h2>
                 <div class="d-inline-block reviews"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> 2,804 Reviews</div><div class="d-inline-block reviews">74 of 100 spots left</div>
               </div>
               <div class="col-lg-4 col-md-12 d-flex justify-content-end">
-                <div class="category">Social Media / Twitter</div>
+                <div class="category">{{gigs.category}}</div>
               </div>
             </div>
-
             <hr />
-
-
               <div class="gigs-content">
-                <p>The Twitter Growth gig will help you to grow your Twitter following with relevant, targeted & real-life people. We use keywords and competitor pages to learn who your ideal customers would be, and then we'll use our tools to target these people and turn them into your followers. This gig works great for companies who post relevant & engaging Tweets on Twitter.</p>
-
-                <h3>Will this work for me? </h3>
-
-                <p>Yes. This will work for any Twitter account, but we encourage you to have relevant tweets for better results. Your followers will be real people relevant to your industry, so they'll be more willing to interact with you and visit your website if you have high quality, relevant tweets.</p>
-
-                <h3>How to get started?</h3>
-
-                <p>Click the 'purchase gig' button above and fill in the form with relevant information. You'll then begin to see results within 24 hours, growing in efficiency from there.</p>
-
-                <h3>What happens after I purchase this gig?</h3>
-
-                <p>After you purchase this gig, we'll begin setting up your Twitter campaign. We'll constantly monitor results and we'll tweak your campaign, adding more competitors and keywords where necessary. </p>
+                {{gigs.description|raw}}
               </div>
             </div>
         </div>
@@ -211,16 +196,16 @@ Information on your competitors.</p>
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
+    <script src="/js/creative.min.js"></script>
     <script>
       $(document).ready(function(){
 

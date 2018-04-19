@@ -81,7 +81,7 @@
                       <div class="featured-icon"><img src="images/gigs/{{featured.iconImage}}" alt="" /></div>
                       <p class="featured-category">{{featured.category|upper}}</p>
                       <h3>{{featured.name|upper}}</h3>
-                      <p class="featured-description">{{featured.description[:150]|raw}}...</p>
+                      <p class="featured-description">{{featured.shortdescription[:150]|raw}</p>
                       <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
                       <div class="clearfix">&nbsp;</div>
                       <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>

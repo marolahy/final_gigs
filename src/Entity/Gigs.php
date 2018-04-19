@@ -39,6 +39,16 @@ class Gigs
      * @ORM\Column(type="string")
      */
     protected $name;
+
+    /**
+     * The name of the product.
+     *
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $shortdescription;
+
+
     /**
      * The description of the product.
      *
@@ -117,6 +127,19 @@ class Gigs
     public function getFeatured()
     {
         return $this->featured;
+    }
+
+    /**
+     * @param string $featured
+     */
+    public function setShortdescription(string $shortdescription)
+    {
+        $this->shortdescription = $shortdescription;
+    }
+
+    public function getShortdescription()
+    {
+        return $this->shortdescription;
     }
 
     /**
