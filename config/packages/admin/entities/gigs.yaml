@@ -1,0 +1,43 @@
+easy_admin:
+    entities:
+        Gigs:
+            class: App\Entity\Gigs
+            label: 'Gigs'
+            list:
+                fields:
+                    - id
+                    - featured
+                    - name
+                    - { property: 'price', format: '%.2f', css_class: text-right }
+                    - { property: 'stock', type: 'integer' }
+                    - { property: 'icon', type: 'image', base_path: '%app.path.gig_images%' }
+                    - { property: 'background', type: 'image', base_path: '%app.path.gig_images%' }
+                    - selled
+            show:
+                fields:
+                    - id
+                    - { property: 'name', css_class: 'large' }
+                    - description
+                    - { property: 'enabled', label: 'Published' }
+                    - price
+                    - { property: 'ean', type: 'string' }
+                    - { property: 'icon', type: 'image', base_path: '%app.path.gig_images%' }
+                    - { property: 'background', type: 'image', base_path: '%app.path.gig_images%' }
+                    - category
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
+                    - { property: 'name', css_class: 'large' }
+                    - { property: 'description', type:  'Hillrange\CKEditor\Form\CKEditorType',css_class: 'large'   }
+                    - { type: 'divider' }
+                    - { property: 'category', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Gigs Details', icon: 'cube' }
+                    - { property: 'price', type: 'number' }
+                    - { property: 'stock', type: 'number' }
+                    - { property: 'selled', type: 'number' }
+                    - { type: 'section', label: 'Advanced Settings', icon: 'warning', help: 'if show in featured gigs' }
+                    - { property: 'featured', label: 'Featured' }
+                    - { property: 'category', type: 'easyadmin_autocomplete' }
+                    - { type: 'group', css_class: 'col-sm-8', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'icon', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'background', type: 'vich_image', type_options: { required: true } }

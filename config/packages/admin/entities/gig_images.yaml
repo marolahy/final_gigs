@@ -1,0 +1,19 @@
+easy_admin:
+    entities:
+        GigImages:
+            class: App\Entity\GigImages
+            label: 'Gig Image'
+            list:
+                fields:
+                    - id
+                    - { property: 'imageFile', type: 'image', base_path: '%app.path.gig_images%' }
+                    - gig
+            show:
+                fields:
+                    - id
+                    - { property: 'imageFile', type: 'image', base_path: '%app.path.gig_images%' }
+                    - gig
+            form:
+                fields:
+                    - { property: 'gig', type: 'easyadmin_autocomplete' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }

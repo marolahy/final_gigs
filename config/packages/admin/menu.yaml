@@ -1,0 +1,9 @@
+easy_admin:
+    design:
+        menu:
+            - label: 'Gigs'
+              icon: 'shopping-basket'
+              children:
+                  - { entity: 'Category', icon: 'th-list', label: 'category', params: { action: 'new' }  }
+                  - { entity: 'Gigs', icon: 'th-list', label: 'gigs', params: { action: 'new' }  }
+                  - { entity: 'GigImages', icon: 'th-list', label: 'gig image', params: { action: 'new' }  }
