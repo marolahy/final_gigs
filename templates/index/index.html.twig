@@ -75,115 +75,19 @@
             <hr />
 
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
-                    <div class="featured-bloc bg-twitter">
-                        <div class="featured-icon"><img src="img/icon-twitter.png" alt="" /></div>
-                        <p class="featured-category">SOCIAL MEDIA</p>
-                        <h3>Twitter Growth</h3>
-                        <p class="featured-description">We'll organically grow your Twitter so that you have relevant & targeted followers</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">74 of 100 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
-                    <div class="featured-bloc bg-instagram">
-                        <div class="featured-icon"><img src="img/icon-instagram.png" alt="" /></div>
-                        <p class="featured-category">SOCIAL MEDIA</p>
-                        <h3>Instagram Growth</h3>
-                        <p class="featured-description">We'll organically grow your Twitter so that you have relevant & targeted followers</p>
-                        <div class="featured-price d-inline-flex"><span class="coming-soon">coming soon</span></div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">74 of 100 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-seo">
-                    <div class="featured-bloc bg-google">
-                        <div class="featured-icon"><img src="img/icon-google.png" alt="" /></div>
-                        <p class="featured-category">SEO</p>
-                        <h3>Move up Google's rankings</h3>
-                        <p class="featured-description">We've tailored and SEO package to help you rapidly climb Google's Ranking within 4 weeks.</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">74 of 100 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-design">
-                    <div class="featured-bloc bg-design">
-                        <div class="featured-icon"><img src="img/icon-design.png" alt="" /></div>
-                        <p class="featured-category">DESIGN</p>
-                        <h3>Unlimited Web & App Design</h3>
-                        <p class="featured-description">Get unlimited web & app design services every mounth. UX/UI, logos, branding & more</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">12 of 15 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-sales">
-                    <div class="featured-bloc bg-sales">
-                        <div class="featured-icon"><img src="img/icon-sales.png" alt="" /></div>
-                        <p class="featured-category">SALES</p>
-                        <h3>400 Custom Leads Monthly</h3>
-                        <p class="featured-description">We'll deliver 400 highly targeted leads every mounth. Each lead is real person in your target market.</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">43 of 50 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-development">
-                    <div class="featured-bloc bg-development">
-                        <div class="featured-icon"><img src="img/icon-development.png" alt="" /></div>
-                        <p class="featured-category">DEVELOPMENT</p>
-                        <h3>Custom Websit Built & Managed</h3>
-                        <p class="featured-description">We'll design & develop a completly custom eCommerce or marketing website for you.</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">19 of 20 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-design">
-                    <div class="featured-bloc bg-growth">
-                        <div class="featured-icon"><img src="img/icon-growth.png" alt="" /></div>
-                        <p class="featured-category">DESIGN</p>
-                        <h3>Twitter Growth</h3>
-                        <p class="featured-description">We'll organically grow your Twitter so that you have relevant & targeted followers</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">74 of 100 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-development">
-                    <div class="featured-bloc bg-advice">
-                        <div class="featured-icon"><img src="img/icon-advice.png" alt="" /></div>
-                        <p class="featured-category">DEVELOPMENT</p>
-                        <h3>Twitter Growth</h3>
-                        <p class="featured-description">We'll organically grow your Twitter so that you have relevant & targeted followers</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">74 of 100 spots left</div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-development">
-                    <div class="featured-bloc bg-seo">
-                        <div class="featured-icon"><img src="img/icon-seo.png" alt="" /></div>
-                        <p class="featured-category">DEVELOPMENT</p>
-                        <h3>Twitter Growth</h3>
-                        <p class="featured-description">We'll organically grow your Twitter so that you have relevant & targeted followers</p>
-                        <div class="featured-price d-inline-flex">$55/m</div>
-                        <div class="clearfix">&nbsp;</div>
-                        <div class="featured-stock">74 of 100 spots left</div>
-                    </div>
-                </div>
-
-
+              {% for featured in featureds %}
+              <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
+                  <div class="featured-bloc" style="background: url(../images/gigs/{{featured.backgroundImage}})">
+                      <div class="featured-icon"><img src="images/gigs/{{featured.iconImage}}" alt="" /></div>
+                      <p class="featured-category">{{featured.category|upper}}</p>
+                      <h3>{{featured.name|upper}}</h3>
+                      <p class="featured-description">{{featured.description}}</p>
+                      <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
+                      <div class="clearfix">&nbsp;</div>
+                      <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>
+                  </div>
+              </div>
+              {% endfor %}
             </div>
         </div>
     </section>

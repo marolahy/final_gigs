@@ -50,7 +50,7 @@ class Category
     /**
      * @param mixed $id
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -66,7 +66,7 @@ class Category
     /**
      * @param mixed $name
      */
-    public function setName(string $name): void
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -83,7 +83,7 @@ class Category
     /**
      * @param mixed $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
@@ -99,7 +99,7 @@ class Category
     /**
      * @param mixed $gigs
      */
-    public function setGigs(array $gigs): void
+    public function setGigs(array $gigs)
     {
         $this->gigs = $gigs;
     }

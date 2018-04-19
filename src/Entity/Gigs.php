@@ -4,10 +4,11 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="gigs")
+ * @ORM\Entity(repositoryClass="App\Repository\GigsRepository")
  * @Vich\Uploadable
  */
 
@@ -93,8 +94,6 @@ class Gigs
     private $background_image;
 
     /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the product.
      *
      * @Vich\UploadableField(mapping="gig_images", fileNameProperty="icon_image")
      *
@@ -105,8 +104,6 @@ class Gigs
 
 
     /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the product.
      *
      * @Vich\UploadableField(mapping="gig_images", fileNameProperty="background_image")
      *
@@ -125,7 +122,7 @@ class Gigs
     /**
      * @param string $featured
      */
-    public function setFeatured(string $featured): void
+    public function setFeatured(string $featured)
     {
         $this->featured = $featured;
     }
@@ -160,7 +157,7 @@ class Gigs
     /**
      * @param int $id
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -169,7 +166,7 @@ class Gigs
     /**
      * @return float
      */
-    public function getPrice(): float
+    public function getPrice()
     {
         return $this->price;
     }
@@ -177,7 +174,7 @@ class Gigs
     /**
      * @param float $price
      */
-    public function setPrice(float $price): void
+    public function setPrice(float $price)
     {
         $this->price = $price;
     }
@@ -193,7 +190,7 @@ class Gigs
     /**
      * @param string $name
      */
-    public function setName(string $name): void
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -209,7 +206,7 @@ class Gigs
     /**
      * @param string $description
      */
-    public function setDescription(string $description): void
+    public function setDescription(string $description)
     {
         $this->description = $description;
     }
@@ -225,7 +222,7 @@ class Gigs
     /**
      * @param mixed $category
      */
-    public function setCategory($category): void
+    public function setCategory($category)
     {
         $this->category = $category;
     }
@@ -241,7 +238,7 @@ class Gigs
     /**
      * @param mixed $images
      */
-    public function setImages($images): void
+    public function setImages($images)
     {
         $this->images = $images;
     }
@@ -257,7 +254,7 @@ class Gigs
     /**
      * @param int $stock
      */
-    public function setStock(int $stock): void
+    public function setStock(int $stock)
     {
         $this->stock = $stock;
     }
@@ -273,7 +270,7 @@ class Gigs
     /**
      * @param int $selled
      */
-    public function setSelled(int $selled): void
+    public function setSelled(int $selled)
     {
         $this->selled = $selled;
     }
@@ -289,7 +286,7 @@ class Gigs
     /**
      * @param mixed $icon
      */
-    public function setIcon($icon): void
+    public function setIcon($icon)
     {
         $this->icon = $icon;
     }
@@ -305,7 +302,7 @@ class Gigs
     /**
      * @param mixed $background
      */
-    public function setBackground($background): void
+    public function setBackground($background)
     {
         $this->background = $background;
     }
@@ -321,7 +318,7 @@ class Gigs
     /**
      * @param File $icon_image
      */
-    public function setIconImage(File $icon_image): void
+    public function setIconImage($icon_image)
     {
         $this->icon_image = $icon_image;
     }
@@ -337,7 +334,7 @@ class Gigs
     /**
      * @param File $background_image
      */
-    public function setBackgroundImage(File $background_image): void
+    public function setBackgroundImage($background_image)
     {
         $this->background_image = $background_image;
     }

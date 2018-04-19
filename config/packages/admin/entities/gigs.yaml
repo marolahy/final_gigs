@@ -10,9 +10,8 @@ easy_admin:
                     - name
                     - { property: 'price', format: '%.2f', css_class: text-right }
                     - { property: 'stock', type: 'integer' }
-                    - { property: 'icon', type: 'image', base_path: '%app.path.gig_images%' }
-                    - { property: 'background', type: 'image', base_path: '%app.path.gig_images%' }
                     - selled
+                    - category
             show:
                 fields:
                     - id
@@ -20,10 +19,7 @@ easy_admin:
                     - description
                     - { property: 'enabled', label: 'Published' }
                     - price
-                    - { property: 'ean', type: 'string' }
-                    - { property: 'icon', type: 'image', base_path: '%app.path.gig_images%' }
-                    - { property: 'background', type: 'image', base_path: '%app.path.gig_images%' }
-                    - category
+
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-8', label: 'Basic information', icon: 'pencil' }
