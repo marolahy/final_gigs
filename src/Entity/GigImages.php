@@ -40,6 +40,24 @@ class GigImages
      */
     private $imageFile;
 
+    /**
+     * It only stores the name of the image associated with the product.
+     *
+     * @ORM\Column(type="string", length=255)
+     *
+     * @var string
+     */
+    private $thumb;
+    /**
+     * This unmapped property stores the binary contents of the image file
+     * associated with the product.
+     *
+     * @Vich\UploadableField(mapping="gig_images", fileNameProperty="thumb")
+     *
+     * @var File
+     */
+    private $thumbFile;
+
 
     /**
      * Many Features have One Product.
@@ -111,6 +129,38 @@ class GigImages
     {
         $this->gig = $gig;
     }
+    /**
+     * @return string
+     */
+    public function getThumb()
+    {
+        return $this->thumb;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setThumb(string $image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return File
+     */
+    public function getThumbFile()
+    {
+        return $this->thumbFile;
+    }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setThumbFile(File $imageFile)
+    {
+        $this->thumbFile = $imageFile;
+    }
+
 
 
 
