@@ -7,3 +7,4 @@ easy_admin:
                   - { entity: 'Category', icon: 'th-list', label: 'category', params: { action: 'new' }  }
                   - { entity: 'Gigs', icon: 'th-list', label: 'gigs', params: { action: 'new' }  }
                   - { entity: 'GigImages', icon: 'th-list', label: 'gig image', params: { action: 'new' }  }
+            - { label: 'Utilisateur', entity: 'User', icon: 'users' }

@@ -1,0 +1,18 @@
+easy_admin:
+    entities:
+        User:
+            class: App\Entity\User
+            list:
+                title: 'Utilisateur'
+                actions: ['-new']
+                fields: ['email', 'username']
+            show:
+                fields: ['username', 'email']
+            form:
+                fields:
+                    - { type: 'group', label: 'Account Information', icon: 'user', css_class: 'col-sm-4' }
+                    - { property: 'username' }
+                    - { type: 'group', label: 'Contact Information', icon: 'envelope-o', css_class: 'col-sm-4' }
+                    - { property: 'email' }
+                    - { type: 'group', label: 'Password', icon: 'key', css_class: 'col-sm-12' }
+                    - { property: 'password', css_class: 'col-sm-12' }
