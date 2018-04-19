@@ -4,7 +4,7 @@ easy_admin:
             - label: 'Gigs'
               icon: 'shopping-basket'
               children:
-                  - { entity: 'Category', icon: 'th-list', label: 'category', params: { action: 'new' }  }
-                  - { entity: 'Gigs', icon: 'th-list', label: 'gigs', params: { action: 'new' }  }
-                  - { entity: 'GigImages', icon: 'th-list', label: 'gig image', params: { action: 'new' }  }
+                  - { entity: 'Category', icon: 'th-list', label: 'category' }
+                  - { entity: 'Gigs', icon: 'th-list', label: 'gigs'  }
+                  - { entity: 'GigImages', icon: 'th-list', label: 'gig image' }
             - { label: 'Utilisateur', entity: 'User', icon: 'users' }

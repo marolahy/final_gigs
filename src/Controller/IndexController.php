@@ -56,4 +56,12 @@ class IndexController extends Controller
          'my_pager' => $pagerfanta,
        ]);
      }
+     /**
+      * @Route("/gigs", name="gigs")
+      */
+     public function gigs()
+     {
+       return $this->render('index/gigs.html.twig', [
+       ]);
+     }
 }

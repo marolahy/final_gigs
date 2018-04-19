@@ -59,7 +59,7 @@ class GigImages
     /**
      * @param int $id
      */
-    public function setId(int $id): void
+    public function setId(int $id)
     {
         $this->id = $id;
     }
@@ -75,7 +75,7 @@ class GigImages
     /**
      * @param string $image
      */
-    public function setImage(string $image): void
+    public function setImage(string $image)
     {
         $this->image = $image;
     }
@@ -91,7 +91,7 @@ class GigImages
     /**
      * @param File $imageFile
      */
-    public function setImageFile(File $imageFile): void
+    public function setImageFile(File $imageFile)
     {
         $this->imageFile = $imageFile;
     }
@@ -107,7 +107,7 @@ class GigImages
     /**
      * @param mixed $gig
      */
-    public function setGig(Gigs $gig): void
+    public function setGig(Gigs $gig)
     {
         $this->gig = $gig;
     }
