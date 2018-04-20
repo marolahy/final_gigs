@@ -69,4 +69,11 @@ class IndexController extends Controller
          'gigs'=>$gigsRepository->findOneBy(array('id'=>$id))
        ]);
      }
+     /**
+      * @Route("/switchCurrency/{currency}")
+      */
+      public function switchCurrency($currency)
+      {
+        
+      }
 }
