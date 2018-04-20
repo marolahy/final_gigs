@@ -1,7 +1,129 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{ path('all-gigs') }}">browse all gigs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#partner">become a partner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<header class="masthead text-center text-white d-flex">
+    <div class="container-fluid my-auto">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="col-lg-8 mx-auto">
+                    <p class="text-faded pepper-title">PEPPERWEB GIGS</p>
+                </div>
+                <h1>
+                    <strong>Grow Your <span>Startup</span></strong>
+                </h1>
+            </div>
+            <div class="col-lg-6 mx-auto">
+
+                <p class="text-faded mb-5 masthead-text">Grow your startup with curated & pre-packaged marketing gigs. Work with experts to grow your startup with high quality & hand-picked growth services.</p>
+                <a class="js-scroll-trigger text-uppercase more-link" href="#featured">Scroll to learn more</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="p-0" id="featured">
+    <div class="container-fluid p-5">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-start featured-header">
+                <h2 class="">Featured Gigs</h2>
+                <div class="currency-box d-inline-flex justify-content-start">
+                    <form>
+                        <label>Currency :</label>
+                        <div class="d-inline-flex form-group">
+                            <select class="border-0">
+                                <option>USD</option>
+                                <option>EUR</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <ul class="nav justify-content-end">
+                    {% for category in categories %}
+                    <li class="nav-item"><a class="{{ (loop.first) ? 'border-left-0' : '' }} {{ (loop.last) ? 'mr-0' : '' }} filter-button" data-filter="filter-{{category.name|lower|replace({' ': "-"})}}" href="/category/{{category.id}}">{{category.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row">
+          {% for featured in my_pager.currentPageResults %}
+          <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
+            <a href="/gigs/{{featured.id}}" style="display:block;text-decoration: none!important;">
+              <div class="featured-bloc" style="background: url(/images/gigs/{{featured.backgroundImage}})">
+                  <div class="featured-icon"><img src="images/gigs/{{featured.iconImage}}" alt="" /></div>
+                  <p class="featured-category">{{featured.category|upper}}</p>
+                  <h3>{{featured.name|upper}}</h3>
+                  <p class="featured-description">{{featured.shortdescription|raw}}</p>
+                  <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
+                  <div class="clearfix">&nbsp;</div>
+                  <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>
+              </div>
+              </a>
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
 <div class="pagerfanta">
-    {{ pagerfanta(my_pager) }}
+    {{ pagerfanta(my_pager,'twitter_bootstrap3') }}
 </div>
 
+
+
+<footer id="footer">
+    <div class="container-fluid">
+        <div class="col-md-12 mx-auto d-flex justify-content-center">
+            <ul class="d-flex justify-content-center p-0">
+                <li><a href="{{path('all-gigs')}}">BROWSE ALL GIGS</a></li>
+                <li><a href="#">BECOME A PARTNER</a></li>
+                <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-12 mx-auto d-flex justify-content-center">
+            <ul class="d-flex p-0 social-icons">
+                <li><a href="#" target="_blank"><img src="img/footer-ico-facebook.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="img/footer-ico-twitter.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="img/footer-ico-dribble.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="img/footer-ico-vimeo.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="img/footer-ico-google.png" alt="" /></a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-12 mx-auto d-flex justify-content-center">
+            <p class="copy">Pepperweb 2017 - All Rights Reserved</p>
+        </div>
+
+
+    </div>
+</footer>
 {% endblock %}

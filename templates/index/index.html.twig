@@ -66,7 +66,7 @@
                 <div class="col-lg-6">
                     <ul class="nav justify-content-end">
                         {% for category in categories %}
-                        <li class="nav-item"><a class="{{ (loop.first) ? 'border-left-0' : '' }} {{ (loop.last) ? 'mr-0' : '' }} filter-button" data-filter="filter-{{category.name|lower|replace({' ': "-"})}}">{{category.name}}</a></li>
+                        <li class="nav-item"><a class="{{ (loop.first) ? 'border-left-0' : '' }} {{ (loop.last) ? 'mr-0' : '' }} filter-button" data-filter="filter-{{category.name|lower|replace({' ': "-"})}}" href="/category/{{category.id}}">{{category.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -76,17 +76,21 @@
 
             <div class="row">
               {% for featured in featureds %}
-              <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
-                  <div class="featured-bloc" style="background: url(../images/gigs/{{featured.backgroundImage}})">
-                      <div class="featured-icon"><img src="images/gigs/{{featured.iconImage}}" alt="" /></div>
-                      <p class="featured-category">{{featured.category|upper}}</p>
-                      <h3>{{featured.name|upper}}</h3>
-                      <p class="featured-description">{{featured.shortdescription[:150]|raw}</p>
-                      <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
-                      <div class="clearfix">&nbsp;</div>
-                      <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>
-                  </div>
-              </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
+                  <a href="/gigs/{{featured.id}}" style="display:block;text-decoration: none!important;">
+                    <div class="featured-bloc" style="background: url(/images/gigs/{{featured.backgroundImage}})">
+                        <div class="featured-icon"><img src="images/gigs/{{featured.iconImage}}" alt="" /></div>
+                        <p class="featured-category">{{featured.category|upper}}</p>
+                        <h3>{{featured.name|upper}}</h3>
+                        <p class="featured-description">{{featured.shortdescription|raw}}</p>
+                        <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
+                        <div class="clearfix">&nbsp;</div>
+                        <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>
+                    </div>
+                    </a>
+                </div>
+
               {% endfor %}
             </div>
         </div>

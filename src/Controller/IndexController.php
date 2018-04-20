@@ -41,6 +41,7 @@ class IndexController extends Controller
       $pagerfanta = new Pagerfanta($adapter);
       return $this->render('index/allgigs.html.twig', [
       'my_pager' => $pagerfanta,
+      'categories' => $this->getDoctrine()->getRepository(Category::class)->findAll()
       ]);
     }
     /**
@@ -54,6 +55,7 @@ class IndexController extends Controller
        $pagerfanta = new Pagerfanta($adapter);
        return $this->render('index/allgigs.html.twig', [
          'my_pager' => $pagerfanta,
+         'categories' => $this->getDoctrine()->getRepository(Category::class)->findAll()
        ]);
      }
      /**
