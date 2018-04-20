@@ -18,6 +18,6 @@ class AppExtension extends AbstractExtension
     {
       $currencyConverter = new CurrencyConverter();
       $number = $currencyConverter->getCurrentCurrency(number,$currency);
-      return $number
+      return $number;
     }
 }

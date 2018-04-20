@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Service;
+namespace App\Service;
 class CurrencyConverter
 {
   public function getCurrentCurrency($value,$currency)
