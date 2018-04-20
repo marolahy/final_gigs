@@ -66,7 +66,7 @@
                 <div class="col-lg-6">
                     <ul class="nav justify-content-end">
                         {% for category in categories %}
-                        <li class="nav-item"><a class="{{ (loop.first) ? 'border-left-0' : '' }} {{ (loop.last) ? 'mr-0' : '' }} filter-button" data-filter="filter-{{category.name|lower|replace({' ': "-"})}}" href="/category/{{category.id}}">{{category.name}}</a></li>
+                        <li class="nav-item"><a class="{{ (loop.first) ? 'border-left-0' : '' }} {{ (loop.last) ? 'mr-0' : '' }} filter-button" data-filter="filter-{{category.name|lower|replace({' ': "-"})}}" href="{{path('index')}}category/{{category.id}}">{{category.name}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
