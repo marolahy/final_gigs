@@ -55,7 +55,7 @@
                         <form>
                             <label>Currency :</label>
                             <div class="d-inline-flex form-group">
-                                <select class="border-0">
+                                <select class="border-0" onchange="changeCurrency(this)" id="myCurrency">
                                     <option>USD</option>
                                     <option>EUR</option>
                                 </select>
@@ -84,7 +84,7 @@
                         <p class="featured-category">{{featured.category|upper}}</p>
                         <h3>{{featured.name|upper}}</h3>
                         <p class="featured-description">{{featured.shortdescription|raw}}</p>
-                        <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
+                        <div class="featured-price d-inline-flex">{{featured.price|currency(app.session.get('_currency'))}}/m</div>
                         <div class="clearfix">&nbsp;</div>
                         <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>
                     </div>
@@ -201,4 +201,11 @@
 
         </div>
     </footer>
+    <script>
+        var changeCurrency = function(elem){
+          location.href =  '/setcurrency/'+elem.value
+        }
+        document.querySelector('#myCurrency').value = '{{app.session.get('_currency')}}';
+
+    </script>
 {% endblock %}

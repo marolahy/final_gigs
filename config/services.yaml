@@ -33,3 +33,9 @@ services:
       class: Pagerfanta\View\DefaultView
       public: false
       tags: [{ name: pagerfanta.view, alias: default }]
+
+    app.currency_listener:
+      class: App\EventListener\CurrencyListener
+      arguments: ["%kernel.default_locale%"]
+      tags:
+        - { name: kernel.event_subscriber }

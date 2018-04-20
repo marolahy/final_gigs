@@ -17,7 +17,16 @@ class AppExtension extends AbstractExtension
     public function currencyConverter($number,$currency='USD' )
     {
       $currencyConverter = new CurrencyConverter();
-      $number = $currencyConverter->getCurrentCurrency(number,$currency);
+      $number = $currencyConverter->getCurrentCurrency($number,$currency);
+      switch($currency){
+        case 'EUR':
+            $number = $number. '€';
+            break;
+        case 'USD':
+        default:
+            $number = '$ '.$number;
+            break;
+      }
       return $number;
     }
 }

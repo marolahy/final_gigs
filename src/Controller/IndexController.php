@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Category;
 use App\Entity\Gigs;
 use App\Entity\GigImages;
@@ -70,10 +71,28 @@ class IndexController extends Controller
        ]);
      }
      /**
-      * @Route("/switchCurrency/{currency}")
+      * Change the currency for the current user
+      *
+      * @param String $currency
+      * @return array
+      *
+      * @Route("/setcurrency/{currency}", name="setcurrency")
       */
-      public function switchCurrency($currency)
-      {
-        
-      }
+public function setCurrencyAction($currency = null,Request $request)
+{
+  if($currency != null)
+  {
+      // On enregistre la langue en session
+      $this->get('session')->set('_currency', $currency);
+  }
+
+  // on tente de rediriger vers la page d'origine
+  $url = $request->headers->get('referer');
+  if(empty($url))
+  {
+      $url = $this->generateUrl('index');
+  }
+
+  return new RedirectResponse($url);
+}
 }
