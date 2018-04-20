@@ -78,7 +78,7 @@
               {% for featured in featureds %}
 
                 <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
-                  <a href="/gigs/{{featured.id}}" style="display:block;text-decoration: none!important;">
+                  <a href="{{path('index')}}gigs/{{featured.id}}" style="display:block;text-decoration: none!important;">
                     <div class="featured-bloc" style="background: url({{path('index')}}images/gigs/{{featured.backgroundImage}})">
                         <div class="featured-icon"><img src="{{path('index')}}images/gigs/{{featured.iconImage}}" alt="" /></div>
                         <p class="featured-category">{{featured.category|upper}}</p>
