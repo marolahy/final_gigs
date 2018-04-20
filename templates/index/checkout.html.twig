@@ -1,0 +1,235 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container-fluid">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{{ path('all-gigs') }}">browse all gigs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#partner">become a partner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#">Contact us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <header class="inner-masthead text-center text-white d-flex">
+      <div class="container-fluid my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="col-lg-8 mx-auto">
+              <p class="text-faded pepper-title">PEPPERWEB GIGS</p>
+            </div>
+            <h1>
+              <strong>Grow Your <span>Startup</span></strong>
+            </h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+    <section class="p-0" id="checkout">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <h2>BASIC INFO</h2>
+        </div>
+        <div class="row checkout-form">
+
+          <div class="col-lg-4">
+            <input type="text" placeholder="Full Name" />
+            <input type="email" placeholder="Email" />
+          </div>
+
+
+          <div class="col-lg-4">
+            <input type="text" placeholder="Phone Number" />
+            <select>
+              <option>Choose Your Plan</option>
+              <option>Choose Your Plan</option>
+              <option>Choose Your Plan</option>
+              <option>Choose Your Plan</option>
+            </select>
+          </div>
+
+
+          <div class="col-lg-4">
+            <textarea>
+              Additional Message
+            </textarea>
+          </div>
+      </div>
+
+
+      <div class="row purchase-container">
+        <div class="col-lg-4 col-md-6">
+          <div class="gigs-purchase-blocs-item text-center">
+            <img src="/img/purchase-ico-1.png" />
+            <h3>{{gigs.price|currency(app.session.get('_currency'))}}/month</h3>
+            <p>250 - 3k+ followers monthly<br />
+    Real, genuine followers<br />
+    Targeted to your industry<br />
+    Cancel anytime</p>
+
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-4 col-md-6">
+          <div class="gigs-purchase-blocs-item text-center">
+            <img src="/img/purchase-ico-2.png" />
+            <h3>What we require?</h3>
+            <p>Your Twitter username and password<br/>
+    A history of relevant tweets (recommended)<br/>
+    Information on your competitors.</p>
+
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-4 col-md-6">
+          <div class="gigs-purchase-blocs-item text-center">
+            <img src="/img/purchase-ico-3.png" />
+            <h3>Who is service provider?</h3>
+            <p>Growthstore staff will be providing this service.
+            We'll work with you to integrate it into the website, and gather all the necessary information from you so that we can create the project page.</p>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!-- END CONTAINER FLUIDE -->
+      </div>
+    </section>
+
+    <section class="p-0" id="plan-info">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <h2>PLAN INFO</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="gigs-purchase-blocs-item text-center">
+              <img src="/img/purchase-ico-2.png" />
+              <h3>What we require?</h3>
+              <p>Your Twitter username and password<br/>
+      A history of relevant tweets (recommended)<br/>
+      Information on your competitors.</p>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <textarea>Type Your Info Here</textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="d-flex col-sm-10 col-lg-4 col-md-4">
+          <a class="btn" id="paypal-button"></a>
+        <div>
+      </div>
+    </section>
+
+    <script>
+        paypal.Button.render({
+
+            env: 'production', // Or 'sandbox',
+
+            payment: function(data, actions) {
+                /* Set up the payment here */
+            },
+
+            onAuthorize: function(data, actions) {
+                /* Execute the payment here */
+            }
+
+        }, '#paypal-button');
+    </script>
+
+
+
+
+    <footer id="footer">
+      <div class="container-fluid">
+        <div class="col-md-12 mx-auto d-flex justify-content-center">
+            <ul class="d-flex justify-content-center p-0">
+              <li><a href="#">BROWSE ALL GIGS</a></li>
+              <li><a href="#">BECOME A PARTNER</a></li>
+              <li><a href="#">CONTACT US</a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-12 mx-auto d-flex justify-content-center">
+            <ul class="d-flex p-0 social-icons">
+                <li><a href="#" target="_blank"><img src="/img/footer-ico-facebook.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="/img/footer-ico-twitter.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="/img/footer-ico-dribble.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="/img/footer-ico-vimeo.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="/img/footer-ico-google.png" alt="" /></a></li>
+            </ul>
+        </div>
+
+        <div class="col-md-12 mx-auto d-flex justify-content-center">
+            <p class="copy">Pepperweb 2017 - All Rights Reserved</p>
+        </div>
+
+
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
+    <script>
+      $(document).ready(function(){
+
+          $(".filter-button").click(function(){
+              var value = $(this).attr('data-filter');
+
+              if(value == "all")
+              {
+                  //$('.filter').removeClass('hidden');
+                  $('.filter').show('1000');
+              }
+              else
+              {
+      //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
+      //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
+                  $(".filter").not('.'+value).hide('3000');
+                  $('.filter').filter('.'+value).show('3000');
+
+              }
+          });
+
+          if ($(".filter-button").removeClass("active")) {
+      $(this).removeClass("active");
+      }
+      $(this).addClass("active");
+
+      });
+    </script>
+
+
+{% endblock %}

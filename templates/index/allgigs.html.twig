@@ -51,10 +51,10 @@
                     <form>
                         <label>Currency :</label>
                         <div class="d-inline-flex form-group">
-                            <select class="border-0">
-                                <option>USD</option>
-                                <option>EUR</option>
-                            </select>
+                          <select class="border-0" onchange="changeCurrency(this)" id="myCurrency">
+                              <option>USD</option>
+                              <option>EUR</option>
+                          </select>
                         </div>
                     </form>
                 </div>
@@ -75,11 +75,11 @@
           <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
             <a href="/gigs/{{featured.id}}" style="display:block;text-decoration: none!important;">
               <div class="featured-bloc" style="background: url(/images/gigs/{{featured.backgroundImage}})">
-                  <div class="featured-icon"><img src="images/gigs/{{featured.iconImage}}" alt="" /></div>
+                  <div class="featured-icon"><img src="/images/gigs/{{featured.iconImage}}" alt="" /></div>
                   <p class="featured-category">{{featured.category|upper}}</p>
                   <h3>{{featured.name|upper}}</h3>
                   <p class="featured-description">{{featured.shortdescription|raw}}</p>
-                  <div class="featured-price d-inline-flex">${{featured.price}}/m</div>
+                  <div class="featured-price d-inline-flex">{{featured.price|currency(app.session.get('_currency'))}}/m</div>
                   <div class="clearfix">&nbsp;</div>
                   <div class="featured-stock">{{featured.stock - featured.selled }} of {{featured.stock}} spots left</div>
               </div>
@@ -126,4 +126,11 @@
 
     </div>
 </footer>
+<script>
+    var changeCurrency = function(elem){
+      location.href =  '/setcurrency/'+elem.value
+    }
+    document.querySelector('#myCurrency').value = '{{app.session.get('_currency')}}';
+
+</script>
 {% endblock %}

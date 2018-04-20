@@ -48,18 +48,11 @@
                     <div id="myCarousel" class="carousel slide">
                       <!-- main slider carousel items -->
                       <div class="carousel-inner">
-                          <div class="active item carousel-item" data-slide-number="0">
-                              <img src="/img/carousel/image1.jpg" class="img-fluid w-100">
+                      {% for image in gigs.images %}
+                          <div class="{{ (loop.first) ? 'active' : '' }} item carousel-item" data-slide-number="{{loop.index - 1 }}">
+                              <img src="/images/gigs/{{image.image}}" class="img-fluid w-100">
                           </div>
-                          <div class="item carousel-item" data-slide-number="1">
-                              <img src="/img/carousel/image2.jpg" class="img-fluid img-fluid w-100">
-                          </div>
-                          <div class="item carousel-item" data-slide-number="2">
-                              <img src="/img/carousel/image3.jpg" class="img-fluid img-fluid w-100">
-                          </div>
-                          <div class="item carousel-item" data-slide-number="3">
-                              <img src="/img/carousel/image4.jpg" class="img-fluid img-fluid w-100">
-                          </div>
+                      {% endfor %}
 
                           <!--
                             <a class="carousel-control left pt-3" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
@@ -71,26 +64,14 @@
 
 
                       <ul class="carousel-indicators list-inline justify-content-between">
-                          <li class="list-inline-item w-20 active">
-                              <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
-                                  <img src="img/carousel/image1-thumb.jpg" class="img-fluid">
-                              </a>
-                          </li>
-                          <li class="list-inline-item w-20">
-                              <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
-                                  <img src="img/carousel/image2-thumb.jpg" class="img-fluid">
-                              </a>
-                          </li>
-                          <li class="list-inline-item w-20">
-                              <a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
-                                  <img src="img/carousel/image3-thumb.jpg" class="img-fluid">
-                              </a>
-                          </li>
-                          <li class="list-inline-item w-20 ">
-                              <a id="carousel-selector-3" data-slide-to="3" data-target="#myCarousel">
-                                  <img src="img/carousel/image4-thumb.jpg" class="img-fluid">
-                              </a>
-                          </li>
+                        {% for image in gigs.images %}
+
+                        <li class="list-inline-item w-20 active">
+                            <a id="carousel-selector-{{loop.index - 1 }}" class="selected" data-slide-to="{{loop.index - 1 }}" data-target="#myCarousel">
+                                <img src="/images/gigs/{{image.thumb}}" class="img-fluid">
+                            </a>
+                        </li>
+                        {% endfor %}
 
                       </ul>
                     </div>
@@ -120,14 +101,14 @@
   <div class="row purchase-container">
     <div class="col-lg-4 col-md-6">
       <div class="gigs-purchase-blocs-item text-center">
-        <img src="img/purchase-ico-1.png" />
-        <h3>$55/month</h3>
+        <img src="/img/purchase-ico-1.png" />
+        <h3>{{gigs.price|currency(app.session.get('_currency'))}}/month</h3>
         <p>250 - 3k+ followers monthly<br />
 Real, genuine followers<br />
 Targeted to your industry<br />
 Cancel anytime</p>
 
-        <a class="d-inline-flex btn purchase">purchase GIG</a>
+        <a class="d-inline-flex btn purchase" href="/purchase/{{gigs.id}}">purchase GIG</a>
       </div>
     </div>
 
@@ -135,13 +116,13 @@ Cancel anytime</p>
 
     <div class="col-lg-4 col-md-6">
       <div class="gigs-purchase-blocs-item text-center">
-        <img src="img/purchase-ico-2.png" />
+        <img src="/img/purchase-ico-2.png" />
         <h3>What we require?</h3>
         <p>Your Twitter username and password<br/>
 A history of relevant tweets (recommended)<br/>
 Information on your competitors.</p>
 
-        <a class="btn purchase">purchase GIG</a>
+        <a class="btn purchase" href="/purchase/{{gigs.id}}">purchase GIG</a>
       </div>
     </div>
 
@@ -149,12 +130,12 @@ Information on your competitors.</p>
 
     <div class="col-lg-4 col-md-6">
       <div class="gigs-purchase-blocs-item text-center">
-        <img src="img/purchase-ico-3.png" />
+        <img src="/img/purchase-ico-3.png" />
         <h3>Who is service provider?</h3>
         <p>Growthstore staff will be providing this service.
         We'll work with you to integrate it into the website, and gather all the necessary information from you so that we can create the project page.</p>
 
-        <a class="btn purchase">purchase GIG</a>
+        <a class="btn purchase" href="/purchase/{{gigs.id}}" >purchase GIG</a>
       </div>
     </div>
   </div>

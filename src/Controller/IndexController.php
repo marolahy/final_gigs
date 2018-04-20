@@ -70,29 +70,43 @@ class IndexController extends Controller
          'gigs'=>$gigsRepository->findOneBy(array('id'=>$id))
        ]);
      }
-     /**
-      * Change the currency for the current user
-      *
-      * @param String $currency
-      * @return array
-      *
-      * @Route("/setcurrency/{currency}", name="setcurrency")
-      */
-public function setCurrencyAction($currency = null,Request $request)
-{
-  if($currency != null)
-  {
-      // On enregistre la langue en session
-      $this->get('session')->set('_currency', $currency);
-  }
+   /**
+    * Change the currency for the current user
+    *
+    * @param String $currency
+    * @return array
+    *
+    * @Route("/setcurrency/{currency}", name="setcurrency")
+    */
+    public function setCurrencyAction($currency = null,Request $request)
+    {
+      if($currency != null)
+      {
+          // On enregistre la langue en session
+          $this->get('session')->set('_currency', $currency);
+      }
 
-  // on tente de rediriger vers la page d'origine
-  $url = $request->headers->get('referer');
-  if(empty($url))
-  {
-      $url = $this->generateUrl('index');
-  }
+      // on tente de rediriger vers la page d'origine
+      $url = $request->headers->get('referer');
+      if(empty($url))
+      {
+          $url = $this->generateUrl('index');
+      }
 
-  return new RedirectResponse($url);
-}
+      return new RedirectResponse($url);
+    }
+  /**
+   *
+   * @param String id
+   * @return array
+   *
+   * @Route("/purchase/{id}", name="purchase")
+   */
+    public function purchase($id)
+    {
+      return $this->render('index/checkout.html.twig', [
+          'gigs' => $this->getDoctrine()->getRepository(Gigs::class)
+                    ->findOneBy(array('id'=>$id)),
+      ]);
+    }
 }

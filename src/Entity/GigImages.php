@@ -31,8 +31,6 @@ class GigImages
      */
     private $image;
     /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the product.
      *
      * @Vich\UploadableField(mapping="gig_images", fileNameProperty="image")
      *
@@ -49,8 +47,6 @@ class GigImages
      */
     private $thumb;
     /**
-     * This unmapped property stores the binary contents of the image file
-     * associated with the product.
      *
      * @Vich\UploadableField(mapping="gig_images", fileNameProperty="thumb")
      *
@@ -93,7 +89,7 @@ class GigImages
     /**
      * @param string $image
      */
-    public function setImage(string $image)
+    public function setImage($image)
     {
         $this->image = $image;
     }
@@ -109,7 +105,7 @@ class GigImages
     /**
      * @param File $imageFile
      */
-    public function setImageFile(File $imageFile)
+    public function setImageFile($imageFile)
     {
         $this->imageFile = $imageFile;
     }
@@ -140,9 +136,9 @@ class GigImages
     /**
      * @param string $image
      */
-    public function setThumb(string $image)
+    public function setThumb($thumb)
     {
-        $this->image = $image;
+        $this->thumb = $thumb;
     }
 
     /**
@@ -156,9 +152,9 @@ class GigImages
     /**
      * @param File $imageFile
      */
-    public function setThumbFile(File $imageFile)
+    public function setThumbFile($thumbFile)
     {
-        $this->thumbFile = $imageFile;
+        $this->thumbFile = $thumbFile;
     }
 
 
