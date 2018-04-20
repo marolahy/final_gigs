@@ -55,7 +55,7 @@ CREATE TABLE `gig_image` (
   PRIMARY KEY (`id`),
   KEY `IDX_A1797858FE058E5` (`gig_id`),
   CONSTRAINT `FK_A1797858FE058E5` FOREIGN KEY (`gig_id`) REFERENCES `gigs` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `gig_image` (
 
 LOCK TABLES `gig_image` WRITE;
 /*!40000 ALTER TABLE `gig_image` DISABLE KEYS */;
-INSERT INTO `gig_image` VALUES (1,1,'image1.jpg',''),(2,1,'image2.jpg',''),(3,1,'image3.jpg',''),(4,1,'image4.jpg','');
+INSERT INTO `gig_image` VALUES (5,1,'image1.jpg','image1-thumb.jpg'),(6,1,'image2.jpg','image2-thumb.jpg'),(7,1,'image3.jpg','image3-thumb.jpg'),(8,1,'image4.jpg','image4-thumb.jpg');
 /*!40000 ALTER TABLE `gig_image` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -140,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-20 10:02:04
+-- Dump completed on 2018-04-20 15:32:01

@@ -3,7 +3,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container-fluid">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{path('index')}}img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -74,8 +74,8 @@
           {% for featured in my_pager.currentPageResults %}
           <div class="col-lg-4 col-md-6 col-sm-12 filter filter-social-media">
             <a href="/gigs/{{featured.id}}" style="display:block;text-decoration: none!important;">
-              <div class="featured-bloc" style="background: url(/images/gigs/{{featured.backgroundImage}})">
-                  <div class="featured-icon"><img src="/images/gigs/{{featured.iconImage}}" alt="" /></div>
+              <div class="featured-bloc" style="background: url({{path('index')}}images/gigs/{{featured.backgroundImage}})">
+                  <div class="featured-icon"><img src="{{path('index')}}images/gigs/{{featured.iconImage}}" alt="" /></div>
                   <p class="featured-category">{{featured.category|upper}}</p>
                   <h3>{{featured.name|upper}}</h3>
                   <p class="featured-description">{{featured.shortdescription|raw}}</p>
@@ -111,11 +111,11 @@
 
         <div class="col-md-12 mx-auto d-flex justify-content-center">
             <ul class="d-flex p-0 social-icons">
-                <li><a href="#" target="_blank"><img src="img/footer-ico-facebook.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-twitter.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-dribble.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-vimeo.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-google.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-facebook.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-twitter.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-dribble.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-vimeo.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-google.png" alt="" /></a></li>
             </ul>
         </div>
 
@@ -128,7 +128,7 @@
 </footer>
 <script>
     var changeCurrency = function(elem){
-      location.href =  '/setcurrency/'+elem.value
+      location.href =  '{{path('index')}}setcurrency/'+elem.value
     }
     document.querySelector('#myCurrency').value = '{{app.session.get('_currency')}}';
 

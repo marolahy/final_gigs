@@ -2,7 +2,7 @@
 {% block body %}
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container-fluid">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{path('index')}}img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,7 +50,7 @@
                       <div class="carousel-inner">
                       {% for image in gigs.images %}
                           <div class="{{ (loop.first) ? 'active' : '' }} item carousel-item" data-slide-number="{{loop.index - 1 }}">
-                              <img src="/images/gigs/{{image.image}}" class="img-fluid w-100">
+                              <img src="{{path('index')}}images/gigs/{{image.image}}" class="img-fluid w-100">
                           </div>
                       {% endfor %}
 
@@ -68,7 +68,7 @@
 
                         <li class="list-inline-item w-20 active">
                             <a id="carousel-selector-{{loop.index - 1 }}" class="selected" data-slide-to="{{loop.index - 1 }}" data-target="#myCarousel">
-                                <img src="/images/gigs/{{image.thumb}}" class="img-fluid">
+                                <img src="{{path('index')}}images/gigs/{{image.thumb}}" class="img-fluid">
                             </a>
                         </li>
                         {% endfor %}
@@ -101,14 +101,14 @@
   <div class="row purchase-container">
     <div class="col-lg-4 col-md-6">
       <div class="gigs-purchase-blocs-item text-center">
-        <img src="/img/purchase-ico-1.png" />
+        <img src="{{path('index')}}img/purchase-ico-1.png" />
         <h3>{{gigs.price|currency(app.session.get('_currency'))}}/month</h3>
         <p>250 - 3k+ followers monthly<br />
 Real, genuine followers<br />
 Targeted to your industry<br />
 Cancel anytime</p>
 
-        <a class="d-inline-flex btn purchase" href="/purchase/{{gigs.id}}">purchase GIG</a>
+        <a class="d-inline-flex btn purchase" href="{{path('index')}}purchase/{{gigs.id}}">purchase GIG</a>
       </div>
     </div>
 
@@ -122,7 +122,7 @@ Cancel anytime</p>
 A history of relevant tweets (recommended)<br/>
 Information on your competitors.</p>
 
-        <a class="btn purchase" href="/purchase/{{gigs.id}}">purchase GIG</a>
+        <a class="btn purchase" href="{{path('index')}}purchase/{{gigs.id}}">purchase GIG</a>
       </div>
     </div>
 
@@ -130,12 +130,12 @@ Information on your competitors.</p>
 
     <div class="col-lg-4 col-md-6">
       <div class="gigs-purchase-blocs-item text-center">
-        <img src="/img/purchase-ico-3.png" />
+        <img src="{{path('index')}}img/purchase-ico-3.png" />
         <h3>Who is service provider?</h3>
         <p>Growthstore staff will be providing this service.
         We'll work with you to integrate it into the website, and gather all the necessary information from you so that we can create the project page.</p>
 
-        <a class="btn purchase" href="/purchase/{{gigs.id}}" >purchase GIG</a>
+        <a class="btn purchase" href="{{path('index')}}purchase/{{gigs.id}}" >purchase GIG</a>
       </div>
     </div>
   </div>
@@ -159,11 +159,11 @@ Information on your competitors.</p>
 
         <div class="col-md-12 mx-auto d-flex justify-content-center">
             <ul class="d-flex p-0 social-icons">
-                <li><a href="#" target="_blank"><img src="img/footer-ico-facebook.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-twitter.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-dribble.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-vimeo.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="img/footer-ico-google.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-facebook.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-twitter.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-dribble.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-vimeo.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-google.png" alt="" /></a></li>
             </ul>
         </div>
 
@@ -177,16 +177,16 @@ Information on your competitors.</p>
 
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{path('index')}}vendor/jquery/jquery.min.js"></script>
+    <script src="{{path('index')}}vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="{{path('index')}}vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="{{path('index')}}vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="{{path('index')}}vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="/js/creative.min.js"></script>
+    <script src="{{path('index')}}js/creative.min.js"></script>
     <script>
       $(document).ready(function(){
 
