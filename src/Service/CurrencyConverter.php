@@ -28,9 +28,6 @@ class CurrencyConverter
 
   public function getCurrentCurrency($value,$currency)
   {
-
-
-    var_dump($this->currencyRepository);
     if($currency != 'EUR')
       $value = $value * 0.15;
     return $value;
