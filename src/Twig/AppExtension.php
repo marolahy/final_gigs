@@ -4,9 +4,17 @@ namespace App\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use App\Service\CurrencyConverter;
-
+use Doctrine\ORM\EntityManagerInterface;
 class AppExtension extends AbstractExtension
 {
+
+
+    protected $em;
+
+    public function __construct(EntityManagerInterface $em){
+        $this->em = $em;
+    }
+
     public function getFilters()
     {
         return array(
@@ -16,7 +24,7 @@ class AppExtension extends AbstractExtension
 
     public function currencyConverter($number,$currency='USD' )
     {
-      $currencyConverter = new CurrencyConverter();
+      $currencyConverter = new CurrencyConverter($this->em);
       $number = $currencyConverter->getCurrentCurrency($number,$currency);
       switch($currency){
         case 'EUR':

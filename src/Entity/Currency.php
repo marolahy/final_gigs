@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 namespace App\Entity;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="App\Repository\CurrencyRepository")
  */
 class Currency
 {
@@ -32,6 +32,32 @@ class Currency
    * @ORM\Column(type="double")
    */
   protected $value;
+
+
+  public function getName()
+  {
+    return $this->name;
+  }
+  public function setName($name)
+  {
+    $this->name = $name;
+  }
+  public function getDate()
+  {
+    return $this->date;
+  }
+  public function setDate($date)
+  {
+    $this->date = $date;
+  }
+  public function getValue()
+  {
+      return $this->value;
+  }
+  public function setValue($value)
+  {
+    $this->value = $value;
+  }
 
 
 
