@@ -12,9 +12,13 @@ class CurrencyConverter
     private $currencyRepository;
 
 
+    private $em;
+
+
     public function __construct(EntityManager $entityManager)
     {
         $this->currencyRepository = $entityManager->getRepository(Currency::class);
+        $this->em = $entityManager;
     }
 
 
@@ -26,11 +30,22 @@ class CurrencyConverter
         $this->entityManager = $entityManager;
     }
 
-  public function getCurrentCurrency($value,$currency)
+  public function getCurrentCurrency($value,$cur)
   {
-    if($currency != 'EUR')
-      $value = $value * 0.15;
-    return $value;
+    $byNow = $this->currencyRepository->findBy(array('date'=>new \DateTime("now"),'name'=>$cur));
+    if(empty($byNow))
+    {
+      $current_currency = $this->loadCurrency();
+      $currency = new Currency();
+      $currency->setName($cur);
+      $currency->setValue($current_currency->{$cur});
+      $currency->setDate( new \DateTime("now") );
+      $this->em->persist($currency);
+      $this->em->flush();
+      return round($value * $currency->getValue(),2);
+    }else{
+      return round($value * current($byNow)->getValue(),2);
+    }
   }
 
   private function loadCurrency()
@@ -40,8 +55,19 @@ class CurrencyConverter
     $currency = new \stdClass;
     $time = $all_api_call->Cube->Cube['time'];
     $currency->time = $time;
-    foreach($all_api_call->Cube->Cube->Cube as $cube)
-    	$currency->{$cube['currency']} = (float)$cube['rate'];
+    $tmp_usd = 0;
+    foreach($all_api_call->Cube->Cube->Cube as $cube){
+      if($cube['currency'] == 'USD')
+        $tmp_usd = (float)$cube['rate'];
+    }
+    foreach($all_api_call->Cube->Cube->Cube as $cube){
+        if($cube['currency'] == 'USD')
+          $currency->{$cube['currency']} = 1;
+        else{
+          $currency->{$cube['currency']} = ( 1/$tmp_usd ) * (float)$cube['rate'];
+        }
+    }
+    $currency->EUR = ( 1/$tmp_usd );
     return $currency;
   }
 
