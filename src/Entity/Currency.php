@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="category")
+ * @ORM\Table(name="currency")
  * @ORM\Entity(repositoryClass="App\Repository\CurrencyRepository")
  */
 class Currency
@@ -29,7 +29,7 @@ class Currency
   protected $date;
 
   /**
-   * @ORM\Column(type="double")
+   * @ORM\Column(type="float")
    */
   protected $value;
 
@@ -57,6 +57,15 @@ class Currency
   public function setValue($value)
   {
     $this->value = $value;
+  }
+
+  /**
+   * Triggered on insert
+   * @ORM\PrePersist
+   */
+  public function onPrePersist()
+  {
+      $this->date = new \DateTime("now");
   }
 
 
