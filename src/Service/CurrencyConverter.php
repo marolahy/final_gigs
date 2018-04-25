@@ -30,8 +30,10 @@ class CurrencyConverter
         $this->entityManager = $entityManager;
     }
 
-  public function getCurrentCurrency($value,$cur)
+  public function getCurrentCurrency($value,$cur='USD')
   {
+    if(is_null($cur))
+      $cur = 'USD';
     $byNow = $this->currencyRepository->findBy(array('date'=>new \DateTime("now"),'name'=>$cur));
     if(empty($byNow))
     {
@@ -54,7 +56,7 @@ class CurrencyConverter
     $all_api_call = simplexml_load_file($url);
     $currency = new \stdClass;
     $time = $all_api_call->Cube->Cube['time'];
-    $currency->time = $time;
+    $currency->time = (string)$time;
     $tmp_usd = 0;
     foreach($all_api_call->Cube->Cube->Cube as $cube){
       if($cube['currency'] == 'USD')
@@ -67,7 +69,7 @@ class CurrencyConverter
           $currency->{$cube['currency']} = ( 1/$tmp_usd ) * (float)$cube['rate'];
         }
     }
-    $currency->EUR = ( 1/$tmp_usd );
+    $currency->EUR = ( 1 / $tmp_usd );
     return $currency;
   }
 
