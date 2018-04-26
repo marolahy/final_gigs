@@ -112,5 +112,17 @@ class IndexController extends Controller
       ]);
     }
 
+    /**
+     *
+     * @param String orderNumber
+     * @return array
+     *
+     * @Route("/payments/{orderNumber}/cancelled", name="payment_cancel")
+     */
+      public function cancelled($orderNumber)
+      {
+        return new Response('Payment Cancelled');
+      }
+
 
 }

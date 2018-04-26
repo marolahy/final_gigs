@@ -47,6 +47,6 @@ services:
         - { name: kernel.event_subscriber }
     app.payment_listener:
       class: App\EventListener\PaymentListener
-      arguments: ["doctrine.orm.entity_manager"]
+      arguments: ["@doctrine.orm.entity_manager"]
       tags:
         - { name: kernel.event_listener, event: payment.state_change, method: onPaymentStateChange  }
