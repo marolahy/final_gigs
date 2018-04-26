@@ -9,8 +9,10 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Category;
 use App\Entity\Gigs;
 use App\Entity\GigImages;
+use App\Entity\Order;
 use Pagerfanta\Adapter\DoctrineORMAdapter;
 use Pagerfanta\Pagerfanta;
+use JMS\Payment\CoreBundle\Form\ChoosePaymentMethodType;
 
 class IndexController extends Controller
 {
@@ -109,4 +111,6 @@ class IndexController extends Controller
                     ->findOneBy(array('id'=>$id)),
       ]);
     }
+
+
 }

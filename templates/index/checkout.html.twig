@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container-fluid">
         <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src="{{path('index')}}img/pepperweb.png" alt="Pepperweb" /><span>pepperweb</span></a>
@@ -138,26 +137,10 @@
 
       <div class="d-flex justify-content-center">
         <div class="d-flex col-sm-10 col-lg-4 col-md-4">
-          <a class="btn" id="paypal-button"></a>
+          <a class="btn"></a>
         <div>
       </div>
     </section>
-
-    <script>
-        paypal.Button.render({
-
-            env: 'production', // Or 'sandbox',
-
-            payment: function(data, actions) {
-                /* Set up the payment here */
-            },
-
-            onAuthorize: function(data, actions) {
-                /* Execute the payment here */
-            }
-
-        }, '#paypal-button');
-    </script>
 
 
 
@@ -174,11 +157,11 @@
 
         <div class="col-md-12 mx-auto d-flex justify-content-center">
             <ul class="d-flex p-0 social-icons">
-                <li><a href="#" target="_blank"><img src="/img/footer-ico-facebook.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="/img/footer-ico-twitter.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="/img/footer-ico-dribble.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="/img/footer-ico-vimeo.png" alt="" /></a></li>
-                <li><a href="#" target="_blank"><img src="/img/footer-ico-google.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-facebook.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-twitter.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-dribble.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-vimeo.png" alt="" /></a></li>
+                <li><a href="#" target="_blank"><img src="{{path('index')}}img/footer-ico-google.png" alt="" /></a></li>
             </ul>
         </div>
 
@@ -189,47 +172,4 @@
 
       </div>
     </footer>
-
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
-    <script>
-      $(document).ready(function(){
-
-          $(".filter-button").click(function(){
-              var value = $(this).attr('data-filter');
-
-              if(value == "all")
-              {
-                  //$('.filter').removeClass('hidden');
-                  $('.filter').show('1000');
-              }
-              else
-              {
-      //            $('.filter[filter-item="'+value+'"]').removeClass('hidden');
-      //            $(".filter").not('.filter[filter-item="'+value+'"]').addClass('hidden');
-                  $(".filter").not('.'+value).hide('3000');
-                  $('.filter').filter('.'+value).show('3000');
-
-              }
-          });
-
-          if ($(".filter-button").removeClass("active")) {
-      $(this).removeClass("active");
-      }
-      $(this).addClass("active");
-
-      });
-    </script>
-
-
 {% endblock %}

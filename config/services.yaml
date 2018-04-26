@@ -3,11 +3,12 @@
 parameters:
     locale: 'en'
     app.path.gig_images: /images/gigs
-    
+jms_payment_core:
+    secret: def00000c4dc7294f70180ea251ed34c952f848163ccc7a3e1bb0cc001e6fb112134d20ea2c7992ea20a698bcd2982c48e46943fd68045078067c28e2d6bbd2ca8da2ed2
 jms_payment_paypal:
-    username: your_api_username # not your account username
-    password: your_api_password # not your account password
-    signature: your_api_signature
+    username: info_api1.pepperweb.co # not your account username
+    password: J5HBSHJ4UNEU94T4 # not your account password
+    signature: AxuTMRDez7IcD43usoa3yzoUNrfKAMC.KhLwI36Cobj7a5cUdkGm6swf
 
 services:
     # default configuration for services in *this* file
@@ -44,3 +45,8 @@ services:
       arguments: ["%kernel.default_locale%"]
       tags:
         - { name: kernel.event_subscriber }
+    app.payment_listener:
+      class: App\EventListener\PaymentListener
+      arguments: ["doctrine.orm.entity_manager"]
+      tags:
+        - { name: kernel.event_listener, event: payment.state_change, method: onPaymentStateChange  }
