@@ -9,6 +9,8 @@ jms_payment_paypal:
     username: marolahy_api1.zoho.com
     password: 6BQ9UWETQ4NMEFRE
     signature: A1patfw0JNKmRwU9sz7IJBaK35-5ATHyCIlgJOobkYc77wKBZqHyb9WJ
+    useraction: commit
+    debug: true
 
 services:
     # default configuration for services in *this* file
