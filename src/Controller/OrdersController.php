@@ -20,16 +20,17 @@ class OrdersController extends Controller
 {
 
 /**
- * @Route("/new/{id}")
+ * @Route("/new/{id}",name="create.order")
  */
   public function newAction($id,Request $request)
   {
       $em = $this->getDoctrine()->getManager();
       $gig = $this->getDoctrine()->getRepository(Gigs::class)->find($id);
       $order = new Order($gig);
-      $order->setName($request->query->get('name'));
-      $order->setPhone($request->query->get('phone'));
-      $order->setMessage($request->query->get('message'));
+      $order->setName($request->get('name'));
+      $order->setEmail($request->get('email'));
+      $order->setPhone($request->get('phone'));
+      $order->setMessage($request->get('message'));
       $em->persist($order);
       $em->flush();
 

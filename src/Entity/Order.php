@@ -30,6 +30,15 @@ class Order
 
 
     /**
+     * The name of the customer.
+     *
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $email;
+
+
+    /**
      * The phone number of the customer.
      *
      * @var string
@@ -66,8 +75,8 @@ class Order
 
     public function __construct(Gigs $gig)
     {
-        $this->gigs = $gigs;
-        $this->amount = $gigs->getPrice;
+        $this->gigs = $gig;
+        $this->amount = $gig->getPrice();
     }
 
     public function getId()
@@ -115,6 +124,17 @@ class Order
     {
       $this->name = $name;
     }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+      $this->email = $email;
+    }
+
     public function getPhone()
     {
       return $this->phone;
