@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use JMS\Payment\CoreBundle\PluginController\Result;
 use App\Entity\Order;
 use App\Entity\Gigs;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @Route("/orders")
@@ -45,8 +46,8 @@ class OrdersController extends Controller
         'currency' => 'USD',
         'predefined_data' => [
             'paypal_express_checkout' => [
-              'return_url' => $this->generateUrl('payment_complete',['orderNumber' => $order->getId()],true),
-              'cancel_url' => $this->generateUrl('payment_cancel',['orderNumber' => $order->getId()],true),
+              'return_url' => $this->generateUrl('payment_complete',['orderNumber' => $order->getId()],UrlGeneratorInterface::ABSOLUTE_URL),
+              'cancel_url' => $this->generateUrl('payment_cancel',['orderNumber' => $order->getId()],UrlGeneratorInterface::ABSOLUTE_URL),
               'useraction' => 'commit',
             ]
         ],
