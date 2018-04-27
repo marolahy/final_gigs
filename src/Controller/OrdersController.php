@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use JMS\Payment\CoreBundle\PluginController\Result;
 use App\Entity\Order;
+use App\Entity\Gigs;
 
 /**
  * @Route("/orders")
@@ -16,13 +17,16 @@ class OrdersController extends Controller
 {
 
 /**
- * @Route("/new/{amount}")
+ * @Route("/new/{id}")
  */
-  public function newAction($amount)
+  public function newAction($id,Request $request)
   {
       $em = $this->getDoctrine()->getManager();
-
-      $order = new Order($amount);
+      $gig = $this->getDoctrine()->getRepository(Gigs::class)->find($id);
+      $order = new Order($gig);
+      $order->setName($request->query->get('name'));
+      $order->setPhone($request->query->get('phone'));
+      $order->setMessage($request->query->get('message'));
       $em->persist($order);
       $em->flush();
 
