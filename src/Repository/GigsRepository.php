@@ -23,4 +23,12 @@ class GigsRepository extends ServiceEntityRepository
             ->setParameter('cid',$cid)
             ->getQuery();
     }
+
+    public function count()
+    {
+      return $this->createQueryBuilder('p')
+            ->select('count(p.id) as nbre')
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

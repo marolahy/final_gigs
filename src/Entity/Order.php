@@ -8,6 +8,7 @@ use JMS\Payment\CoreBundle\Entity\PaymentInstruction;
 /**
  * @ORM\Table(name="orders")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\OrderRepository")
  */
 class Order
 {
