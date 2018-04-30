@@ -30,9 +30,6 @@ class AdminController extends Controller
         'gigs'=> $gigs['nbre'],
         'orders'=>$orders['nbre'],
     ]);
-
   }
-
-
 
 }
