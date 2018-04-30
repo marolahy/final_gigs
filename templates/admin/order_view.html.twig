@@ -1,0 +1,22 @@
+{% extends 'admin_base.html.twig' %}
+{% block body %}
+<div class="row">
+  <div class="col-sm-12">
+    <form role="form">
+    		<div class="form-group">
+					<label>Name</label>
+					<input class="form-control" placeholder="Placeholder" readonly value="{{ order.name }}">
+    	  </div>
+				<div class="form-group">
+					<label>Gigs</label>
+					<input class="form-control" placeholder="Placeholder" readonly value="{{ order.gig.name }}">
+				</div>
+        <div class="form-group">
+					<label>Amount</label>
+					<input class="form-control" placeholder="Placeholder" readonly value="{{ order.amount }}">
+				</div>
+        <a class="btn btn-secondary" href="{{path('order_list')}}">Back</a>
+    </form>
+  </div>
+</div>
+{% endblock %}

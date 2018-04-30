@@ -1,0 +1,32 @@
+{% extends 'admin_base.html.twig' %}
+{% block body %}
+<div class="row">
+  <div class="col-sm-12">
+    <div id="orders">Loading...</div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block javascripts %}
+<script>
+$(function() {
+  $('#orders').initDataTables({{ datatable_settings(datatable) }}, {
+      searching: true
+  }).then(function(dt) {
+      // dt contains the initialized instance of DataTables
+      $('#orders tbody').on( 'click', 'tr', function () {
+        if ( $(this).hasClass('selected') ) {
+            $(this).removeClass('selected');
+        }
+        else {
+            dt.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    } );
+
+  });
+});
+</script>
+
+{% endblock %}

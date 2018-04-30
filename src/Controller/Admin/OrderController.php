@@ -10,6 +10,7 @@ use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Omines\DataTablesBundle\Column\TextColumn;
 use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
 /**
@@ -33,6 +34,11 @@ class OrderController extends Controller
             ->add('email', TextColumn::class,['label' => 'Email', 'className' => 'bold'])
             ->add('featured', TextColumn::class,['label' => 'Phone', 'className' => 'bold'])
             ->add('amount', TextColumn::class,['label' => 'Amount', 'className' => 'bold'])
+            ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
+                                           'render'=>function($value,$context){
+                                             return sprintf("<a class=\"btn btn-info btn-sm\" href=\"/admin/orders/%s\">View</a>",$value);
+                                           }
+                                          ])
             ->createAdapter(ORMAdapter::class, [
                 'entity' => Order::class,
                 'query' => function (QueryBuilder $builder) {
@@ -48,7 +54,7 @@ class OrderController extends Controller
             return $table->getResponse();
         }
 
-    return $this->render('admin/order_list.html.twig', [
+    return $this->render('admin/list.html.twig', [
         'name'=>'Order',
         'class'=>'order',
         'datatable' => $table,
@@ -57,11 +63,16 @@ class OrderController extends Controller
 
 
   /**
-   * @Route("/orders/{$id}", name="order_view")
+   * @Route("/orders/{id}", name="order_view")
    */
   public function viewOrder($id)
   {
-
+      $order = $this->getDoctrine()->getRepository(Order::class)->find($id);
+      return $this->render('admin/order_view.html.twig',[
+        'name'=>'Order',
+        'class'=>'order',
+        'order'=>$order
+      ]);
   }
 
 }

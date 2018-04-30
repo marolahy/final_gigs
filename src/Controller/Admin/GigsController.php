@@ -31,7 +31,14 @@ class GigsController extends Controller
             ->add('name', TextColumn::class,['label' => 'Name', 'className' => 'bold'])
             ->add('price', TextColumn::class,['label' => 'Price', 'className' => 'bold'])
             ->add('featured', BoolColumn::class,['label' => 'Featured', 'className' => 'bold'])
-            ->add('amount', TextColumn::class,['label' => 'Amount', 'className' => 'bold'])
+            ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
+                                           'render'=>function($value,$context){
+                                             $html  = "<a class=\"btn btn-info btn-sm\" href=\"/admin/gigs/$value\">View</a>";
+                                             $html .= "<a class=\"btn btn-danger btn-sm\" href=\"/admin/gigs/$value/delete\">Delete</a>";
+                                             $html .= "<a class=\"btn btn-success btn-sm\" href=\"/admin/gigs/$value/delete\">Update</a>";
+                                             return $html;
+                                           }
+                                          ])
             ->createAdapter(ORMAdapter::class, [
                 'entity' => Gigs::class,
                 'query' => function (QueryBuilder $builder) {
@@ -47,10 +54,42 @@ class GigsController extends Controller
             return $table->getResponse();
         }
 
-    return $this->render('admin/order_list.html.twig', [
+    return $this->render('admin/list.html.twig', [
         'name'=>'Gigs',
         'class'=>'gigs',
         'datatable' => $table,
+    ]);
+  }
+
+
+  /**
+   * @Route("/gigs/{id}", name="gigs_view")
+   */
+  public function viewGigs($id)
+  {
+    return $this->render('admin/gigs_view.html.twig', [
+        'name'=>'Gigs',
+        'class'=>'gigs'
+    ]);
+  }
+  /**
+   * @Route("/gigs/{id}/delete", name="gigs_delete")
+   */
+  public function deleteGigs($id)
+  {
+    return $this->render('admin/gigs_view.html.twig', [
+        'name'=>'Gigs',
+        'class'=>'gigs'
+    ]);
+  }
+  /**
+   * @Route("/gigs/{id}/update", name="gigs_delete")
+   */
+  public function updateGigs($id)
+  {
+    return $this->render('admin/gigs_view.html.twig', [
+        'name'=>'Gigs',
+        'class'=>'gigs'
     ]);
   }
 
