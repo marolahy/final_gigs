@@ -54,10 +54,22 @@ class GigsController extends Controller
             return $table->getResponse();
         }
 
-    return $this->render('admin/list.html.twig', [
+    return $this->render('admin/gigs_list.html.twig', [
         'name'=>'Gigs',
         'class'=>'gigs',
         'datatable' => $table,
+    ]);
+  }
+
+
+  /**
+   * @Route("/gigs/new", name="gigs_new")
+   */
+  public function newGigs()
+  {
+    return $this->render('admin/gigs_new.html.twig', [
+        'name'=>'Gigs',
+        'class'=>'gigs'
     ]);
   }
 

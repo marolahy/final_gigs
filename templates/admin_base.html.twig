@@ -46,7 +46,7 @@
 			<li class="{{class=='dashboard'? 'active' : '' }}"><a href="{{ path('dashboard') }}"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
 			<li class="{{class=='order'? 'active' : '' }}"><a href="{{ path('order_list') }}"><em class="fa fa-calendar">&nbsp;</em> Orders</a></li>
 			<li class="{{class=='gigs'? 'active' : '' }}"><a href="{{ path('gigs_list') }}"><em class="fa fa-bar-chart">&nbsp;</em> Gigs</a></li>
-			<li><a href="elements.html"><em class="fa fa-toggle-off">&nbsp;</em>Categories</a></li>
+			<li class="{{class=='category'? 'active' : '' }}"><a href="{{ path('category_list') }}"><em class="fa fa-toggle-off">&nbsp;</em>Categories</a></li>
 			<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
 		</ul>
 	</div><!--/.sidebar-->

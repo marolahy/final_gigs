@@ -1,6 +1,19 @@
 {% extends 'admin_base.html.twig' %}
 {% block body %}
 <div class="row">
+      <div class="col-sm-8">
+      </div>
+      <div class="col-sm-4">
+        <div class="button-action">
+            <a class="btn btn-primary action-new" href="{{ path('gigs_new')}}" target="_self">
+                                                                      Add Gigs
+            </a>
+        </div>
+      </div>
+</div>
+<div class="row">
+
+    </div>
   <div class="col-sm-12">
     <div id="gigs">Loading...</div>
   </div>
