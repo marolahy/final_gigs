@@ -67,7 +67,9 @@ class GigImagesController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('gig_images_edit', ['id' => $gigImage->getId()]);
+            return $this->redirectToRoute('gig_images_edit', [
+                                          'id' => $gigImage->getId()
+                                        ]);
         }
 
         return $this->render('gig_images/edit.html.twig', [
