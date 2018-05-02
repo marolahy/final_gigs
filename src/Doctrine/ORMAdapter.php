@@ -183,8 +183,7 @@ class ORMAdapter extends AbstractAdapter
         }
 
         foreach ($builder->getQuery()->iterate([], $this->hydrationMode) as $result) {
-
-            $data = array_reduce($result, 'array_merge', array());
+            $data = current($result);
             yield $entity = json_decode(json_encode($data), FALSE);
             $this->manager->detach($entity);
         }
@@ -323,5 +322,5 @@ class ORMAdapter extends AbstractAdapter
     }
 
 
-    
+
 }
