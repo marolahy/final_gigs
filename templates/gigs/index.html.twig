@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gigs index{% endblock %}
+
+{% block body %}
+    <h1>Gigs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Price</th>
+                <th>Name</th>
+                <th>Shortdescription</th>
+                <th>Description</th>
+                <th>Featured</th>
+                <th>Stock</th>
+                <th>Selled</th>
+                <th>Icon_image</th>
+                <th>Background_image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gig in gigs %}
+            <tr>
+                <td>{{ gig.id }}</td>
+                <td>{{ gig.price }}</td>
+                <td>{{ gig.name }}</td>
+                <td>{{ gig.shortdescription }}</td>
+                <td>{{ gig.description }}</td>
+                <td>{{ gig.featured ? 'Yes' : 'No' }}</td>
+                <td>{{ gig.stock }}</td>
+                <td>{{ gig.selled }}</td>
+                <td>{{ gig.icon_image }}</td>
+                <td>{{ gig.background_image }}</td>
+                <td>
+                    <a href="{{ path('gigs_show', {'id': gig.id}) }}">show</a>
+                    <a href="{{ path('gigs_edit', {'id': gig.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gigs_new') }}">Create new</a>
+{% endblock %}

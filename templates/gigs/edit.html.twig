@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Gigs{% endblock %}
+
+{% block body %}
+    <h1>Edit Gigs</h1>
+
+    {{ include('gigs/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('gigs_list') }}">back to list</a>
+
+    {{ include('gigs/_delete_form.html.twig') }}
+{% endblock %}

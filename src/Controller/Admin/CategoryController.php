@@ -105,7 +105,7 @@ class CategoryController extends Controller
    }
 
    /**
-    * @Route("/{id}/edit", name="category_edit", methods="GET|POST")
+    * @Route("/{id}/update", name="category_edit", methods="GET|POST")
     */
    public function edit(Request $request, Category $category): Response
    {
@@ -127,16 +127,14 @@ class CategoryController extends Controller
    }
 
    /**
-    * @Route("/{id}", name="category_delete", methods="DELETE")
+    * @Route("/{id}/delete", name="category_delete")
     */
-   public function delete(Request $request, Category $category): Response
+   public function delete($id, Request $request): Response
    {
-       if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
-           $em = $this->getDoctrine()->getManager();
-           $em->remove($category);
-           $em->flush();
-       }
-
+       $category = $this->getDoctrine()->getRepository(Category::class)->findOneBy(array('id'=>$id));
+       $em = $this->getDoctrine()->getManager();
+       $em->remove($category);
+       $em->flush();
        return $this->redirectToRoute('category_list');
    }
 

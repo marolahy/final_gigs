@@ -11,10 +11,13 @@ use Omines\DataTablesBundle\Column\TextColumn;
 use Omines\DataTablesBundle\Column\BoolColumn;
 use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
+use App\Form\GigImagesType;
+use App\Form\GigsType;
+use Symfony\Component\HttpFoundation\Response;
 
 
 /**
- * @Route("/admin")
+ * @Route("/admin/gigs")
  */
 class GigsController extends Controller
 {
@@ -22,7 +25,7 @@ class GigsController extends Controller
   use DataTablesTrait;
 
   /**
-   * @Route("/gigs", name="gigs_list")
+   * @Route("/", name="gigs_list")
    */
   public function orderList(Request $request)
   {
@@ -63,46 +66,70 @@ class GigsController extends Controller
 
 
   /**
-   * @Route("/gigs/new", name="gigs_new")
+   * @Route("/new", name="gigs_new", methods="GET|POST")
    */
-  public function newGigs()
+  public function new(Request $request): Response
   {
-    return $this->render('admin/gigs_new.html.twig', [
-        'name'=>'Gigs',
-        'class'=>'gigs'
-    ]);
+      $gig = new Gigs();
+      $form = $this->createForm(GigsType::class, $gig);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $em = $this->getDoctrine()->getManager();
+          $em->persist($gig);
+          $em->flush();
+
+          return $this->redirectToRoute('gigs_list');
+      }
+
+      return $this->render('gigs/new.html.twig', [
+          'name'=>'Gigs',
+          'class'=>'gigs',
+          'gig' => $gig,
+          'form' => $form->createView(),
+      ]);
   }
 
+  /**
+   * @Route("/{id}", name="gigs_show", methods="GET")
+   */
+  public function show(Gigs $gig): Response
+  {
+      return $this->render('gigs/show.html.twig', ['gig' => $gig]);
+  }
 
   /**
-   * @Route("/gigs/{id}", name="gigs_view")
+   * @Route("/{id}/edit", name="gigs_edit", methods="GET|POST")
    */
-  public function viewGigs($id)
+  public function edit(Request $request, Gigs $gig): Response
   {
-    return $this->render('admin/gigs_view.html.twig', [
-        'name'=>'Gigs',
-        'class'=>'gigs'
-    ]);
+      $form = $this->createForm(GigsType::class, $gig);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+          $this->getDoctrine()->getManager()->flush();
+
+          return $this->redirectToRoute('gigs_edit', ['id' => $gig->getId()]);
+      }
+
+      return $this->render('gigs/edit.html.twig', [
+          'gig' => $gig,
+          'form' => $form->createView(),
+      ]);
   }
+
   /**
-   * @Route("/gigs/{id}/delete", name="gigs_delete")
+   * @Route("/{id}", name="gigs_delete")
    */
-  public function deleteGigs($id)
+  public function delete(Request $request, Gigs $gig): Response
   {
-    return $this->render('admin/gigs_view.html.twig', [
-        'name'=>'Gigs',
-        'class'=>'gigs'
-    ]);
-  }
-  /**
-   * @Route("/gigs/{id}/update", name="gigs_delete")
-   */
-  public function updateGigs($id)
-  {
-    return $this->render('admin/gigs_view.html.twig', [
-        'name'=>'Gigs',
-        'class'=>'gigs'
-    ]);
+      if ($this->isCsrfTokenValid('delete'.$gig->getId(), $request->request->get('_token'))) {
+          $em = $this->getDoctrine()->getManager();
+          $em->remove($gig);
+          $em->flush();
+      }
+
+      return $this->redirectToRoute('gigs_index');
   }
 
 }

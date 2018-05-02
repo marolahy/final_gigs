@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gigs{% endblock %}
+
+{% block body %}
+    <h1>Gigs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gig.id }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ gig.price }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ gig.name }}</td>
+            </tr>
+            <tr>
+                <th>Shortdescription</th>
+                <td>{{ gig.shortdescription }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ gig.description }}</td>
+            </tr>
+            <tr>
+                <th>Featured</th>
+                <td>{{ gig.featured ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ gig.stock }}</td>
+            </tr>
+            <tr>
+                <th>Selled</th>
+                <td>{{ gig.selled }}</td>
+            </tr>
+            <tr>
+                <th>Icon_image</th>
+                <td>{{ gig.icon_image }}</td>
+            </tr>
+            <tr>
+                <th>Background_image</th>
+                <td>{{ gig.background_image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gigs_index') }}">back to list</a>
+
+    <a href="{{ path('gigs_edit', {'id': gig.id}) }}">edit</a>
+
+    {{ include('gigs/_delete_form.html.twig') }}
+{% endblock %}
