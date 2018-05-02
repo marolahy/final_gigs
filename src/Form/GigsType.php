@@ -7,7 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+//use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class GigsType extends AbstractType
 {
@@ -21,8 +22,8 @@ class GigsType extends AbstractType
             ->add('featured')
             ->add('stock')
             ->add('selled')
-            ->add('icon',FileType::class)
-            ->add('background',FileType::class)
+            ->add('icon',VichImageType::class)
+            ->add('background',VichImageType::class)
             ->add('category')
         ;
     }

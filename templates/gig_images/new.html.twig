@@ -1,11 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}New GigImages{% endblock %}
 
 {% block body %}
-    <h1>Create new GigImages</h1>
 
     {{ include('gig_images/_form.html.twig') }}
 
-    <a href="{{ path('gig_images_index') }}">back to list</a>
+    <a href="{{ path('gigs_show',{id:gig_image.gig.id}) }}">back to list</a>
 {% endblock %}

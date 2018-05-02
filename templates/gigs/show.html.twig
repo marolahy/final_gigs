@@ -50,6 +50,46 @@
         </tbody>
     </table>
 
+
+    <div class="panel panel-default">
+					<div class="panel-heading">Gig Images</div>
+					<div class="panel-body">
+						<div class="col-md-6">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Id</th>
+                          <th>Image</th>
+                          <th>Thumb</th>
+                          <th>actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                  {% for gig_image in gig_images %}
+                      <tr>
+                          <td>{{ gig_image.id }}</td>
+                          <td>{{ gig_image.image }}</td>
+                          <td>{{ gig_image.thumb }}</td>
+                          <td>
+                              <a href="{{ path('gig_images_show', {'id': gig_image.id}) }}">show</a>
+                              <a href="{{ path('gig_images_edit', {'id': gig_image.id}) }}">edit</a>
+                          </td>
+                      </tr>
+                  {% else %}
+                      <tr>
+                          <td colspan="4">no records found</td>
+                      </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
+
+              <a href="{{ path('gig_images_new',{'id': gig.id}) }}">Create new</a>
+
+						</div>
+					</div>
+        </div>
+    </div>
+
     <a href="{{ path('gigs_list') }}">back to list</a>
 
     <a href="{{ path('gigs_edit', {'id': gig.id}) }}">edit</a>

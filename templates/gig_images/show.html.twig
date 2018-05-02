@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}GigImages{% endblock %}
 
@@ -13,16 +13,16 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ gig_image.image }}</td>
+                <td><img src="{{ vich_uploader_asset(gig_image, 'imageFile') }}" /></td>
             </tr>
             <tr>
                 <th>Thumb</th>
-                <td>{{ gig_image.thumb }}</td>
+                <td><img src="{{ vich_uploader_asset(gig_image, 'thumbFile') }}" /></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('gig_images_index') }}">back to list</a>
+    <a href="{{ path('gigs_show',{id:gig_image.gig.id}) }}">back to list</a>
 
     <a href="{{ path('gig_images_edit', {'id': gig_image.id}) }}">edit</a>
 

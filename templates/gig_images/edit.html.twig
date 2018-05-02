@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}Edit GigImages{% endblock %}
 
@@ -7,7 +7,7 @@
 
     {{ include('gig_images/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('gig_images_index') }}">back to list</a>
+    <a href="{{ path('gigs_show',{id:gig_image.gig.id}) }}">back to list</a>
 
     {{ include('gig_images/_delete_form.html.twig') }}
 {% endblock %}

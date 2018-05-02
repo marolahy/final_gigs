@@ -14,6 +14,7 @@ use Doctrine\ORM\QueryBuilder;
 use App\Form\GigImagesType;
 use App\Form\GigsType;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\GigImages;
 
 
 /**
@@ -95,10 +96,14 @@ class GigsController extends Controller
    */
   public function show(Gigs $gig): Response
   {
+    $gigImages = $this->getDoctrine()
+        ->getRepository(GigImages::class)
+        ->findBy(array('gig'=>$gig->getId()));
       return $this->render('gigs/show.html.twig', [
         'name'=>'Gigs',
         'class'=>'gigs',
-        'gig' => $gig
+        'gig' => $gig,
+        'gig_images'=>$gigImages
       ]);
   }
 
@@ -117,6 +122,8 @@ class GigsController extends Controller
       }
 
       return $this->render('gigs/edit.html.twig', [
+          'name'=>'Gigs',
+          'class'=>'gigs',
           'gig' => $gig,
           'form' => $form->createView(),
       ]);

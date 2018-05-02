@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
+
+use App\Entity\Gigs;
 use App\Entity\GigImages;
 use App\Form\GigImagesType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -10,28 +12,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/gig/images")
+ * @Route("/admin/gig/images")
  */
 class GigImagesController extends Controller
 {
-    /**
-     * @Route("/", name="gig_images_index", methods="GET")
-     */
-    public function index(): Response
-    {
-        $gigImages = $this->getDoctrine()
-            ->getRepository(GigImages::class)
-            ->findAll();
-
-        return $this->render('gig_images/index.html.twig', ['gig_images' => $gigImages]);
-    }
 
     /**
-     * @Route("/new", name="gig_images_new", methods="GET|POST")
+     * @Route("/{id}/new", name="gig_images_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new($id, Request $request): Response
     {
+        $gigs = $this->getDoctrine()->getRepository(Gigs::class)->findOneBy(array('id'=>$id));
         $gigImage = new GigImages();
+        $gigImage->setGig($gigs);
         $form = $this->createForm(GigImagesType::class, $gigImage);
         $form->handleRequest($request);
 
@@ -40,10 +33,12 @@ class GigImagesController extends Controller
             $em->persist($gigImage);
             $em->flush();
 
-            return $this->redirectToRoute('gig_images_index');
+            return $this->redirectToRoute('gigs_show',['id'=>$gigImage->getGig()->getId()]);
         }
 
         return $this->render('gig_images/new.html.twig', [
+            'name'=>'Gigs',
+            'class'=>'gigs',
             'gig_image' => $gigImage,
             'form' => $form->createView(),
         ]);
@@ -54,7 +49,11 @@ class GigImagesController extends Controller
      */
     public function show(GigImages $gigImage): Response
     {
-        return $this->render('gig_images/show.html.twig', ['gig_image' => $gigImage]);
+        return $this->render('gig_images/show.html.twig', [
+                      'name'=>'Gigs',
+                      'class'=>'gigs',
+                      'gig_image' => $gigImage
+            ]);
     }
 
     /**
@@ -72,6 +71,8 @@ class GigImagesController extends Controller
         }
 
         return $this->render('gig_images/edit.html.twig', [
+            'name'=>'Gigs',
+            'class'=>'gigs',
             'gig_image' => $gigImage,
             'form' => $form->createView(),
         ]);

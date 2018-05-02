@@ -20,7 +20,6 @@ class GigsDirectoryNamer implements DirectoryNamerInterface
      public function directoryName($gigs, PropertyMapping $mapping)
      {
           $id = $gigs->getId();
-
           return $id.'/';
      }
 }
