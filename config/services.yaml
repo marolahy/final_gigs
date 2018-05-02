@@ -37,6 +37,16 @@ services:
     # please note that last definitions always *replace* previous ones
 
 
+    gigs.directory_namer:
+        class: App\Service\GigsDirectoryNamer
+        arguments: [%kernel.root_dir%]
+        public: true
+
+    gigimages.directory_namer:
+        class: App\Service\GigImagesDirectoryNamer
+        arguments: [%kernel.root_dir%]
+        public: true 
+
     pagerfanta.view.default:
       class: Pagerfanta\View\DefaultView
       public: false

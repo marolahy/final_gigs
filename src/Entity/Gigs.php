@@ -105,7 +105,7 @@ class Gigs
 
     /**
      *
-     * @Vich\UploadableField(mapping="gig_images", fileNameProperty="icon_image")
+     * @Vich\UploadableField(mapping="gigs", fileNameProperty="icon_image")
      *
      * @var File
      */
@@ -115,7 +115,7 @@ class Gigs
 
     /**
      *
-     * @Vich\UploadableField(mapping="gig_images", fileNameProperty="background_image")
+     * @Vich\UploadableField(mapping="gigs", fileNameProperty="background_image")
      *
      * @var File
      */

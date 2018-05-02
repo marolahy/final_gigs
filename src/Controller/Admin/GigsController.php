@@ -95,7 +95,11 @@ class GigsController extends Controller
    */
   public function show(Gigs $gig): Response
   {
-      return $this->render('gigs/show.html.twig', ['gig' => $gig]);
+      return $this->render('gigs/show.html.twig', [
+        'name'=>'Gigs',
+        'class'=>'gigs',
+        'gig' => $gig
+      ]);
   }
 
   /**

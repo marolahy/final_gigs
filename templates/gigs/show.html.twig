@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin_base.html.twig' %}
 
 {% block title %}Gigs{% endblock %}
 
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ gig.description }}</td>
+                <td>{{ gig.description|raw }}</td>
             </tr>
             <tr>
                 <th>Featured</th>
@@ -41,16 +41,16 @@
             </tr>
             <tr>
                 <th>Icon_image</th>
-                <td>{{ gig.icon_image }}</td>
+                <td><img src="{{ vich_uploader_asset(gig, 'icon') }}" /></td>
             </tr>
             <tr>
                 <th>Background_image</th>
-                <td>{{ gig.background_image }}</td>
+                <td><img src="{{ vich_uploader_asset(gig, 'background') }}" /></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('gigs_index') }}">back to list</a>
+    <a href="{{ path('gigs_list') }}">back to list</a>
 
     <a href="{{ path('gigs_edit', {'id': gig.id}) }}">edit</a>
 

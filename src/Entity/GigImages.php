@@ -32,7 +32,7 @@ class GigImages
     private $image;
     /**
      *
-     * @Vich\UploadableField(mapping="gig_images", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="gigimages", fileNameProperty="image")
      *
      * @var File
      */
@@ -48,7 +48,7 @@ class GigImages
     private $thumb;
     /**
      *
-     * @Vich\UploadableField(mapping="gig_images", fileNameProperty="thumb")
+     * @Vich\UploadableField(mapping="gigimages", fileNameProperty="thumb")
      *
      * @var File
      */

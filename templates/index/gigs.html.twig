@@ -50,7 +50,7 @@
                       <div class="carousel-inner">
                       {% for image in gigs.images %}
                           <div class="{{ (loop.first) ? 'active' : '' }} item carousel-item" data-slide-number="{{loop.index - 1 }}">
-                              <img src="{{path('index')}}images/gigs/{{image.image}}" class="img-fluid w-100">
+                              <img src="{{ vich_uploader_asset(image, 'imageFile') }}" class="img-fluid w-100">
                           </div>
                       {% endfor %}
 
@@ -68,7 +68,7 @@
 
                         <li class="list-inline-item w-20 active">
                             <a id="carousel-selector-{{loop.index - 1 }}" class="selected" data-slide-to="{{loop.index - 1 }}" data-target="#myCarousel">
-                                <img src="{{path('index')}}images/gigs/{{image.thumb}}" class="img-fluid">
+                                <img src="{{ vich_uploader_asset(image, 'thumbFile') }}" class="img-fluid">
                             </a>
                         </li>
                         {% endfor %}
