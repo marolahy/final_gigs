@@ -13,15 +13,17 @@ use Omines\DataTablesBundle\Column\BoolColumn;
 use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query\Expr\Join;
+use App\Form\CategoryType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/admin")
+ * @Route("/admin/category")
  */
 class CategoryController extends Controller
 {
    use DataTablesTrait;
    /**
-    * @Route("/category", name="category_list")
+    * @Route("/", name="category_list")
     */
    public function orderList(Request $request)
    {
@@ -38,7 +40,7 @@ class CategoryController extends Controller
                           'render'=>function($value,$context){
                                   $html  = "<a class=\"btn btn-info btn-sm\" href=\"/admin/category/$value\">View</a>";
                                   $html .= "<a class=\"btn btn-danger btn-sm\" href=\"/admin/category/$value/delete\">Delete</a>";
-                                  $html .= "<a class=\"btn btn-success btn-sm\" href=\"/admin/category/$value/delete\">Update</a>";
+                                  $html .= "<a class=\"btn btn-success btn-sm\" href=\"/admin/category/$value/update\">Update</a>";
                                   return $html;
                                 }
                           ])
@@ -59,11 +61,83 @@ class CategoryController extends Controller
              return $table->getResponse();
          }
 
-     return $this->render('admin/list.html.twig', [
+     return $this->render('admin/category_list.html.twig', [
          'name'=>'Category',
          'class'=>'category',
          'datatable' => $table,
      ]);
+   }
+   /**
+    * @Route("/new", name="category_new", methods="GET|POST")
+    */
+   public function new(Request $request): Response
+   {
+       $category = new Category();
+       $form = $this->createForm(CategoryType::class, $category);
+       $form->handleRequest($request);
+
+       if ($form->isSubmitted() && $form->isValid()) {
+           $em = $this->getDoctrine()->getManager();
+           $em->persist($category);
+           $em->flush();
+
+           return $this->redirectToRoute('category_list');
+       }
+
+       return $this->render('category/new.html.twig', [
+           'name'=>'Category',
+           'class'=>'category',
+           'category' => $category,
+           'form' => $form->createView(),
+       ]);
+   }
+
+   /**
+    * @Route("/{id}", name="category_show", methods="GET")
+    */
+   public function show(Category $category): Response
+   {
+       return $this->render('category/show.html.twig', [
+         'name'=>'Category',
+         'class'=>'category',
+         'category' => $category
+       ]);
+   }
+
+   /**
+    * @Route("/{id}/edit", name="category_edit", methods="GET|POST")
+    */
+   public function edit(Request $request, Category $category): Response
+   {
+       $form = $this->createForm(CategoryType::class, $category);
+       $form->handleRequest($request);
+
+       if ($form->isSubmitted() && $form->isValid()) {
+           $this->getDoctrine()->getManager()->flush();
+
+           return $this->redirectToRoute('category_edit', ['id' => $category->getId()]);
+       }
+
+       return $this->render('category/edit.html.twig', [
+           'name'=>'Category',
+           'class'=>'category',
+           'category' => $category,
+           'form' => $form->createView(),
+       ]);
+   }
+
+   /**
+    * @Route("/{id}", name="category_delete", methods="DELETE")
+    */
+   public function delete(Request $request, Category $category): Response
+   {
+       if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
+           $em = $this->getDoctrine()->getManager();
+           $em->remove($category);
+           $em->flush();
+       }
+
+       return $this->redirectToRoute('category_list');
    }
 
 }
