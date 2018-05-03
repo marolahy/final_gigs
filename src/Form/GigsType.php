@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 //use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 class GigsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -19,7 +19,7 @@ class GigsType extends AbstractType
             ->add('name')
             ->add('shortdescription')
             ->add('description', CKEditorType::class)
-            ->add('featured')
+            ->add('featured',CheckboxType::class)
             ->add('stock')
             ->add('selled')
             ->add('icon',VichImageType::class)
