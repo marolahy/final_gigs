@@ -77,6 +77,7 @@ class PaymentController
      */
     public function completeAction(Order $order)
     {
+        $em = $this->getDoctrine()->getManager();
         $instruction = $order->getPaymentInstruction();
         if (null === $pendingTransaction = $instruction->getPendingTransaction()) {
             $payment = $this->ppc->createPayment($instruction->getId(), $instruction->getAmount() - $instruction->getDepositedAmount());
@@ -86,6 +87,9 @@ class PaymentController
 
         $result = $this->ppc->approveAndDeposit($payment->getId(), $payment->getTargetAmount());
         if (Result::STATUS_PENDING === $result->getStatus()) {
+            $order->setStatus('PENDING');
+            $em->persist($order);
+            $em->flush();
             $ex = $result->getPluginException();
 
             if ($ex instanceof ActionRequiredException) {
@@ -98,9 +102,14 @@ class PaymentController
                 throw $ex;
             }
         } else if (Result::STATUS_SUCCESS !== $result->getStatus()) {
+            $order->setStatus('NOT PAYED OR CANCELLED');
+            $em->persist($order);
+            $em->flush();
             throw new \RuntimeException('Transaction was not successful: '.$result->getReasonCode());
         }
-
+        $order->setStatus('PAYED');
+        $em->persist($order);
+        $em->flush();
         // payment was successful, do something interesting with the order
     }
 }

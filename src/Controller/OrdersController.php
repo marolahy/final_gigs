@@ -31,6 +31,7 @@ class OrdersController extends Controller
       $order->setEmail($request->get('email'));
       $order->setPhone($request->get('phone'));
       $order->setMessage($request->get('message'));
+      $order->setStatus('PENDING');
       $em->persist($order);
       $em->flush();
 

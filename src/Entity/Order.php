@@ -64,6 +64,24 @@ class Order
     protected $gig;
 
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $status;
+
+
+    public function getStatus()
+    {
+      return $this->status;
+    }
+
+
+    public function setStatus($status)
+    {
+      $this->status = $status;
+    }
+
+
 
 
 
