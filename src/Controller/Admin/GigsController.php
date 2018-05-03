@@ -37,9 +37,9 @@ class GigsController extends Controller
             ->add('featured', BoolColumn::class,['label' => 'Featured', 'className' => 'bold'])
             ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
                                            'render'=>function($value,$context){
-                                             $html  = "<a class=\"btn btn-info btn-sm\" href=\"/admin/gigs/$value\">View</a>";
-                                             $html .= "<a class=\"btn btn-danger btn-sm\" href=\"/admin/gigs/$value/delete\">Delete</a>";
-                                             $html .= "<a class=\"btn btn-success btn-sm\" href=\"/admin/gigs/$value/delete\">Update</a>";
+                                             $html  = "<a class=\"btn btn-info btn-sm\" href=\"".$this->generateUrl('gigs_show',['id'=>$value])."\">View</a>";
+                                             $html .= "<a class=\"btn btn-danger btn-sm\" href=\"".$this->generateUrl('gigs_delete',['id'=>$value])."\">Delete</a>";
+                                             $html .= "<a class=\"btn btn-success btn-sm\" href=\"".$this->generateUrl('gigs_edit',['id'=>$value])."\">Update</a>";
                                              return $html;
                                            }
                                           ])
