@@ -126,7 +126,7 @@ class Gigs
      */
     public function getFeatured()
     {
-        return $this->featured;
+        return (bool)$this->featured;
     }
 
     /**
