@@ -13,11 +13,11 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td><img src="{{ vich_uploader_asset(gig_image, 'imageFile') }}" /></td>
+                <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(gig_image, 'imageFile') }}" /></td>
             </tr>
             <tr>
                 <th>Thumb</th>
-                <td><img src="{{ vich_uploader_asset(gig_image, 'thumbFile') }}" /></td>
+                <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(gig_image, 'thumbFile') }}" /></td>
             </tr>
         </tbody>
     </table>

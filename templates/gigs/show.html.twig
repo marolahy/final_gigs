@@ -41,11 +41,11 @@
             </tr>
             <tr>
                 <th>Icon_image</th>
-                <td><img src="{{ vich_uploader_asset(gig, 'icon') }}" /></td>
+                <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(gig, 'icon') }}" /></td>
             </tr>
             <tr>
                 <th>Background_image</th>
-                <td><img src="{{ vich_uploader_asset(gig, 'background') }}" /></td>
+                <td><img src="{{ app.request.basePath }}{{ vich_uploader_asset(gig, 'background') }}" /></td>
             </tr>
         </tbody>
     </table>
