@@ -76,7 +76,7 @@ class Order
 
     public function __construct(Gigs $gig)
     {
-        $this->gigs = $gig;
+        $this->gig = $gig;
         $this->amount = $gig->getPrice();
     }
 
