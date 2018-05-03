@@ -124,7 +124,7 @@ class Gigs
     /**
      * @return string
      */
-    public function getFeatured():boolean
+    public function getFeatured():\boolean
     {
         return (boolean)$this->featured;
     }
