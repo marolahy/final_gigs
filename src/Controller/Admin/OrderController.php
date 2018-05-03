@@ -36,7 +36,7 @@ class OrderController extends Controller
             ->add('amount', TextColumn::class,['label' => 'Amount', 'className' => 'bold'])
             ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
                                            'render'=>function($value,$context){
-                                             return sprintf("<a class=\"btn btn-info btn-sm\" href=\"/admin/orders/%s\">View</a>",$value);
+                                             return "<a class=\"btn btn-info btn-sm\" href=\"".$this->generateUrl('order_view',['id'=>$value])."\">View</a>";
                                            }
                                           ])
             ->createAdapter(ORMAdapter::class, [
