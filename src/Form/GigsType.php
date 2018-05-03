@@ -19,7 +19,7 @@ class GigsType extends AbstractType
             ->add('name')
             ->add('shortdescription')
             ->add('description', CKEditorType::class)
-            ->add('featured',CheckboxType::class)
+            ->add('featured',CheckboxType::class,['required'=>false])
             ->add('stock')
             ->add('selled')
             ->add('icon',VichImageType::class)

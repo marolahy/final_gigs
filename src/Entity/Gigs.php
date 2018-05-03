@@ -124,9 +124,9 @@ class Gigs
     /**
      * @return string
      */
-    public function getFeatured():\boolean
+    public function getFeatured():bool
     {
-        return (\boolean)$this->featured;
+        return (bool)$this->featured;
     }
 
     /**
@@ -145,7 +145,7 @@ class Gigs
     /**
      * @param string $featured
      */
-    public function setFeatured(string $featured)
+    public function setFeatured(bool $featured)
     {
         $this->featured = $featured;
     }
