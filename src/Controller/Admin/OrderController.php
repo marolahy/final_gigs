@@ -32,13 +32,15 @@ class OrderController extends Controller
     $table = $this->createDataTable()
             ->add('name', TextColumn::class,['label' => 'Name', 'className' => 'bold'])
             ->add('email', TextColumn::class,['label' => 'Email', 'className' => 'bold'])
-            ->add('featured', TextColumn::class,['label' => 'Phone', 'className' => 'bold'])
+            ->add('phone', TextColumn::class,['label' => 'Phone', 'className' => 'bold'])
+            ->add('status', TextColumn::class,['label' => 'Status', 'className' => 'bold'])
             ->add('amount', TextColumn::class,['label' => 'Amount', 'className' => 'bold'])
             ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
                                            'render'=>function($value,$context){
                                              return "<a class=\"btn btn-info btn-sm\" href=\"".$this->generateUrl('order_view',['id'=>$value])."\">View</a>";
                                            }
                                           ])
+
             ->createAdapter(ORMAdapter::class, [
                 'entity' => Order::class,
                 'query' => function (QueryBuilder $builder) {
@@ -49,7 +51,6 @@ class OrderController extends Controller
               },
             ])
             ->handleRequest($request);
-
         if ($table->isCallback()) {
             return $table->getResponse();
         }
