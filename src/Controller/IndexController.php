@@ -129,7 +129,7 @@ class IndexController extends Controller
        * @param String orderNumber
        * @return array
        *
-       * @Route("thank-you", name="thank_you")
+       * @Route("/thank-you", name="thank_you")
        */
         public function thankYou()
         {
