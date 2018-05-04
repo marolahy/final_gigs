@@ -124,5 +124,18 @@ class IndexController extends Controller
         return new Response('Payment Cancelled');
       }
 
+      /**
+       *
+       * @param String orderNumber
+       * @return array
+       *
+       * @Route("thank-you", name="thank_you")
+       */
+        public function thankYou()
+        {
+          return $this->render('index/thanks.html.twig', [
+           ]);
+        }
+
 
 }

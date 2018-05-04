@@ -11,6 +11,7 @@ use Omines\DataTablesBundle\Column\TextColumn;
 use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Omines\DataTablesBundle\Filter\TextFilter;
 
 
 /**
@@ -28,9 +29,12 @@ class OrderController extends Controller
    */
   public function orderList(Request $request)
   {
-
     $table = $this->createDataTable()
-            ->add('name', TextColumn::class,['label' => 'Name', 'className' => 'bold'])
+            ->add('name', TextColumn::class,[
+                        'label' => 'Name',
+                        'className' => 'bold',
+                        'globalSearchable'=>true,
+                        'searchable'=>true,'filter'=>[]])
             ->add('email', TextColumn::class,['label' => 'Email', 'className' => 'bold'])
             ->add('phone', TextColumn::class,['label' => 'Phone', 'className' => 'bold'])
             ->add('status', TextColumn::class,['label' => 'Status', 'className' => 'bold'])
