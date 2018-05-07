@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 /**
  * Class OrderDatatable
  */
-class OrderDatatable extends AbstractDatatable
+class GigsDatatable extends AbstractDatatable
 {
 
     /**
@@ -32,17 +32,11 @@ class OrderDatatable extends AbstractDatatable
                 'title' => 'Name',
                 'class_name' => 'bezama'
             ))
-            ->add('email', Column::class, array(
-                'title' => 'Email',
+            ->add('price', Column::class, array(
+                'title' => 'Price',
             ))
-            ->add('phone', Column::class, array(
-                'title' => 'phone',
-            ))
-            ->add('status', Column::class, array(
-                'title' => 'Status',
-            ))
-            ->add('amount', Column::class, array(
-                'title' => 'Amount',
+            ->add('featured', Column::class, array(
+                'title' => 'Featured',
             ))
             ->add(null, ActionColumn::class, array(
                 'title' => 'Actions',
@@ -64,7 +58,39 @@ class OrderDatatable extends AbstractDatatable
                       'class' => 'btn btn-primary btn-xs',
                       'role' => 'button',
                   ),
-              )
+              ),
+              array(
+                'route' => 'order_view',
+                'route_parameters' => array(
+                    'id' => 'id',
+                ),
+              'icon' => 'glyphicon glyphicon-eye-open',
+              'label' => 'Update',
+              'confirm' => true,
+              'confirm_message' => 'Are you sure?',
+              'attributes' => array(
+                  'rel' => 'tooltip',
+                  'title' => 'Show',
+                  'class' => 'btn btn-primary btn-xs',
+                  'role' => 'button',
+              ),
+          ),
+          array(
+            'route' => 'order_view',
+            'route_parameters' => array(
+                'id' => 'id',
+            ),
+          'icon' => 'glyphicon glyphicon-eye-open',
+          'label' => 'Delete',
+          'confirm' => true,
+          'confirm_message' => 'Are you sure?',
+          'attributes' => array(
+              'rel' => 'tooltip',
+              'title' => 'Show',
+              'class' => 'btn btn-primary btn-xs',
+              'role' => 'button',
+          ),
+      ),
             )
           )
           );
@@ -74,13 +100,13 @@ class OrderDatatable extends AbstractDatatable
      */
     public function getEntity()
     {
-        return 'App\Entity\Order';
+        return 'App\Entity\Gigs';
     }
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'order_datatable';
+        return 'gigs_datatable';
     }
 }

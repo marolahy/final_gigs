@@ -12,34 +12,8 @@
       </div>
 </div>
 <div class="row">
-
-    </div>
   <div class="col-sm-12">
-    <div id="gigs">Loading...</div>
+    {{ sg_datatables_render(datatable) }}
   </div>
 </div>
-{% endblock %}
-
-
-{% block javascripts %}
-<script>
-$(function() {
-  $('#gigs').initDataTables({{ datatable_settings(datatable) }}, {
-      searching: true
-  }).then(function(dt) {
-      // dt contains the initialized instance of DataTables
-      $('#orders tbody').on( 'click', 'tr', function () {
-        if ( $(this).hasClass('selected') ) {
-            $(this).removeClass('selected');
-        }
-        else {
-            dt.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
-        }
-    } );
-
-  });
-});
-</script>
-
 {% endblock %}

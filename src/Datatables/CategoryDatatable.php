@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 /**
  * Class OrderDatatable
  */
-class OrderDatatable extends AbstractDatatable
+class CategoryDatatable extends AbstractDatatable
 {
 
     /**
@@ -74,13 +74,13 @@ class OrderDatatable extends AbstractDatatable
      */
     public function getEntity()
     {
-        return 'App\Entity\Order';
+        return 'App\Entity\Category';
     }
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'order_datatable';
+        return 'category_datatable';
     }
 }

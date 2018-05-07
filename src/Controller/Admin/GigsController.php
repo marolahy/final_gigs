@@ -6,16 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Gigs;
-use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
-use Omines\DataTablesBundle\Column\TextColumn;
-use Omines\DataTablesBundle\Column\BoolColumn;
-use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
 use App\Form\GigImagesType;
 use App\Form\GigsType;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\GigImages;
-
+use App\Datatables\GigsDatatable;
 
 /**
  * @Route("/admin/gigs")
@@ -23,7 +19,6 @@ use App\Entity\GigImages;
 class GigsController extends Controller
 {
 
-  use DataTablesTrait;
 
   /**
    * @Route("/", name="gigs_list")
@@ -31,37 +26,23 @@ class GigsController extends Controller
   public function orderList(Request $request)
   {
 
-    $table = $this->createDataTable()
-            ->add('name', TextColumn::class,['label' => 'Name', 'className' => 'bold'])
-            ->add('price', TextColumn::class,['label' => 'Price', 'className' => 'bold'])
-            ->add('featured', BoolColumn::class,['label' => 'Featured', 'className' => 'bold'])
-            ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
-                                           'render'=>function($value,$context){
-                                             $html  = "<a class=\"btn btn-info btn-sm\" href=\"".$this->generateUrl('gigs_show',['id'=>$value])."\">View</a>";
-                                             $html .= "<a class=\"btn btn-danger btn-sm\" href=\"".$this->generateUrl('gigs_delete',['id'=>$value])."\">Delete</a>";
-                                             $html .= "<a class=\"btn btn-success btn-sm\" href=\"".$this->generateUrl('gigs_edit',['id'=>$value])."\">Update</a>";
-                                             return $html;
-                                           }
-                                          ])
-            ->createAdapter(ORMAdapter::class, [
-                'entity' => Gigs::class,
-                'query' => function (QueryBuilder $builder) {
-                  $builder
-                      ->select('e')
-                      ->from(Gigs::class, 'e')
-                  ;
-              },
-            ])
-            ->handleRequest($request);
+    $isAjax = $request->isXmlHttpRequest();
+    $datatable = $this->get('sg_datatables.factory')->create(GigsDatatable::class);
+    $datatable->buildDatatable();
 
-        if ($table->isCallback()) {
-            return $table->getResponse();
-        }
+    if ($isAjax) {
+        $responseService = $this->get('sg_datatables.response');
+        $responseService->setDatatable($datatable);
+        $responseService->getDatatableQueryBuilder();
+
+        return $responseService->getResponse();
+    }
+
 
     return $this->render('admin/gigs_list.html.twig', [
         'name'=>'Gigs',
         'class'=>'gigs',
-        'datatable' => $table,
+        'datatable' => $datatable,
     ]);
   }
 

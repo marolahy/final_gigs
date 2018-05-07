@@ -1025,9 +1025,12 @@ h1.page-header {
 
 .fixed-table-pagination .pagination-detail {
   margin-top: 20px; }
-  
+
 p.back-link {
   text-align: center;
   margin-bottom: 20px;
   font-size: 12px;
   text-transform: uppercase; }
+.bezama{
+  width:50px;
+}
