@@ -3,6 +3,7 @@ namespace App\Datatables;
 use Sg\DatatablesBundle\Datatable\AbstractDatatable;
 use Sg\DatatablesBundle\Datatable\Style;
 use Sg\DatatablesBundle\Datatable\Column\Column;
+use Sg\DatatablesBundle\Datatable\Column\ActionColumn;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 /**
  * Class OrderDatatable
@@ -56,7 +57,30 @@ class OrderDatatable extends AbstractDatatable
             ->add('amount', Column::class, array(
                 'title' => 'Amount',
             ))
-        ;
+            ->add(null, ActionColumn::class, array(
+                'title' => 'Actions',
+                'start_html' => '<div class="start_actions">',
+                'end_html' => '</div>',
+                'actions' => array(
+                  array(
+                    'route' => 'order_view',
+                    'route_parameters' => array(
+                        'id' => 'id',
+                    ),
+                  'icon' => 'glyphicon glyphicon-eye-open',
+                  'label' => 'View',
+                  'confirm' => true,
+                  'confirm_message' => 'Are you sure?',
+                  'attributes' => array(
+                      'rel' => 'tooltip',
+                      'title' => 'Show',
+                      'class' => 'btn btn-primary btn-xs',
+                      'role' => 'button',
+                  ),
+              )
+            )
+          )
+          );
     }
     /**
      * {@inheritdoc}
