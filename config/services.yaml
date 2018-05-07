@@ -45,12 +45,13 @@ services:
     gigimages.directory_namer:
         class: App\Service\GigImagesDirectoryNamer
         arguments: [%kernel.root_dir%]
-        public: true 
+        public: true
 
     pagerfanta.view.default:
       class: Pagerfanta\View\DefaultView
       public: false
       tags: [{ name: pagerfanta.view, alias: default }]
+
 
     app.currency_listener:
       class: App\EventListener\CurrencyListener

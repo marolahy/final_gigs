@@ -12,6 +12,7 @@ use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Omines\DataTablesBundle\Filter\TextFilter;
+use App\Datatables\OrderDatatable;
 
 
 /**
@@ -29,16 +30,23 @@ class OrderController extends Controller
    */
   public function orderList(Request $request)
   {
-    $table = $this->createDataTable()
+    $textFilter = new TextFilter();
+    $textFilter->set([
+      'template_html' => '@DataTables/Filter/text.html.twig',
+      'template_js' => '@DataTables/Filter/text.js.twig',
+      'placeholder' => null,
+    ]);
+    $table = $this->createDataTable(['searching'=>true])
             ->add('name', TextColumn::class,[
                         'label' => 'Name',
-                        'className' => 'bold',
+                        'className' => 'select-filter',
                         'globalSearchable'=>true,
-                        'searchable'=>true,'filter'=>[]])
-            ->add('email', TextColumn::class,['label' => 'Email', 'className' => 'bold'])
-            ->add('phone', TextColumn::class,['label' => 'Phone', 'className' => 'bold'])
-            ->add('status', TextColumn::class,['label' => 'Status', 'className' => 'bold'])
-            ->add('amount', TextColumn::class,['label' => 'Amount', 'className' => 'bold'])
+                        'searchable'=>true,
+                      ])
+            ->add('email', TextColumn::class,['label' => 'Email', 'className' => 'select-filter'])
+            ->add('phone', TextColumn::class,['label' => 'Phone', 'className' => 'select-filter'])
+            ->add('status', TextColumn::class,['label' => 'Status', 'className' => 'select-filter'])
+            ->add('amount', TextColumn::class,['label' => 'Amount', 'className' => 'select-filter'])
             ->add('id', TextColumn::class,['label' => 'Action', 'className' => 'bold',
                                            'render'=>function($value,$context){
                                              return "<a class=\"btn btn-info btn-sm\" href=\"".$this->generateUrl('order_view',['id'=>$value])."\">View</a>";
@@ -79,5 +87,42 @@ class OrderController extends Controller
         'order'=>$order
       ]);
   }
+
+  /**
+ * Lists all Post entities.
+ *
+ * @param Request $request
+ *
+ * @Route("/orders_sg", name="post_index")
+ *
+ * @return Response
+ */
+public function indexAction(Request $request)
+{
+    $isAjax = $request->isXmlHttpRequest();
+
+    // Get your Datatable ...
+    //$datatable = $this->get('app.datatable.post');
+    //$datatable->buildDatatable();
+
+    // or use the DatatableFactory
+    /** @var DatatableInterface $datatable */
+    $datatable = $this->get('sg_datatables.factory')->create(OrderDatatable::class);
+    $datatable->buildDatatable();
+
+    if ($isAjax) {
+        $responseService = $this->get('sg_datatables.response');
+        $responseService->setDatatable($datatable);
+        $responseService->getDatatableQueryBuilder();
+
+        return $responseService->getResponse();
+    }
+
+    return $this->render('admin/list.html.twig', array(
+        'name'=>'Order',
+        'class'=>'order',
+        'datatable' => $datatable,
+    ));
+}
 
 }

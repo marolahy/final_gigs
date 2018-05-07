@@ -21,4 +21,7 @@ return [
     JMS\Payment\PaypalBundle\JMSPaymentPaypalBundle::class => ['all' => true],
     Omines\DataTablesBundle\DataTablesBundle::class => ['all' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
+    FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
+    Sg\DatatablesBundle\SgDatatablesBundle::class => ['all' => true],
+    Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle::class => ['all' => true],
 ];
