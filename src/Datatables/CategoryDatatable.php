@@ -32,17 +32,10 @@ class CategoryDatatable extends AbstractDatatable
                 'title' => 'Name',
                 'class_name' => 'bezama'
             ))
-            ->add('email', Column::class, array(
-                'title' => 'Email',
-            ))
-            ->add('phone', Column::class, array(
-                'title' => 'phone',
-            ))
-            ->add('status', Column::class, array(
-                'title' => 'Status',
-            ))
-            ->add('amount', Column::class, array(
-                'title' => 'Amount',
+            ->add('countGigs', Column::class, array(
+                'title' => 'Gigs',
+                'dql' => '(SELECT COUNT({p}) FROM App:Gigs {p} WHERE {p}.category =category.id)',
+                'searchable'=>false
             ))
             ->add(null, ActionColumn::class, array(
                 'title' => 'Actions',
@@ -50,7 +43,7 @@ class CategoryDatatable extends AbstractDatatable
                 'end_html' => '</div>',
                 'actions' => array(
                   array(
-                    'route' => 'order_view',
+                    'route' => 'category_show',
                     'route_parameters' => array(
                         'id' => 'id',
                     ),
@@ -64,6 +57,38 @@ class CategoryDatatable extends AbstractDatatable
                       'class' => 'btn btn-primary btn-xs',
                       'role' => 'button',
                   ),
+              ),
+              array(
+                'route' => 'category_edit',
+                'route_parameters' => array(
+                    'id' => 'id',
+                ),
+              'icon' => 'glyphicon glyphicon-edit',
+              'label' => 'Edit',
+              'confirm' => true,
+              'confirm_message' => 'Are you sure?',
+              'attributes' => array(
+                  'rel' => 'tooltip',
+                  'title' => 'Show',
+                  'class' => 'btn btn-primary btn-xs',
+                  'role' => 'button',
+              ),
+          ),
+          array(
+            'route' => 'category_delete',
+            'route_parameters' => array(
+                'id' => 'id',
+            ),
+          'icon' => 'glyphicon glyphicon-trash',
+          'label' => 'Delete',
+          'confirm' => true,
+          'confirm_message' => 'Are you sure?',
+          'attributes' => array(
+              'rel' => 'tooltip',
+              'title' => 'Show',
+              'class' => 'btn btn-primary btn-xs',
+              'role' => 'button',
+          ),
               )
             )
           )

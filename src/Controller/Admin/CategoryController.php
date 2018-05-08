@@ -7,65 +7,40 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Category;
-use App\Entity\Gigs;
-use Omines\DataTablesBundle\Column\TextColumn;
-use Omines\DataTablesBundle\Column\BoolColumn;
-use Omines\DataTablesBundle\Controller\DataTablesTrait;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query\Expr\Join;
 use App\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Response;
+use App\Datatables\CategoryDatatable;
 
 /**
  * @Route("/admin/category")
  */
 class CategoryController extends Controller
 {
-   use DataTablesTrait;
    /**
     * @Route("/", name="category_list")
     */
    public function orderList(Request $request)
    {
-     $table = $this->createDataTable()
-             ->add('name', TextColumn::class,['label' => 'Name', 'className' => 'bold'])
-             ->add('countGigs', BoolColumn::class,['label' => 'Gigs',
-                                                    'className' => 'bold',
-                                                    'render'=>function($value,$context){
-                                                      return $context->countGigs;
-                                                    },])
-             ->add('id', TextColumn::class,[
-                          'label' => 'Action',
-                          'className' => 'bold',
-                          'render'=>function($value,$context){
-                                  $html  = "<a class=\"btn btn-info btn-sm\" href=\"".$this->generateUrl('category_show',['id'=>$value])."\">View</a>";
-                                  $html .= "<a class=\"btn btn-danger btn-sm\" href=\"".$this->generateUrl('category_show',['id'=>$value])."\">Delete</a>";
-                                  $html .= "<a class=\"btn btn-success btn-sm\" href=\"".$this->generateUrl('category_edit',['id'=>$value])."\">Update</a>";
-                                  return $html;
-                                }
-                          ])
-             ->createAdapter(ORMAdapter::class, [
-                 'entity' => Category::class,
-                 'hydrate'=>\Doctrine\ORM\Query::HYDRATE_OBJECT,
-                 'query' => function (QueryBuilder $builder) {
-                   $builder
-                  ->select('entity.id, entity.name, COUNT(gigs.id) as countGigs ')
-                  ->from(Category::class, 'entity')
-                  ->distinct()->leftJoin('entity.gigs', 'gigs','entity.id = gigs.category')
-                  ->addGroupBy('entity.id');
-               },
-             ])
-             ->handleRequest($request);
+     $isAjax = $request->isXmlHttpRequest();
+     $datatable = $this->get('sg_datatables.factory')->create(CategoryDatatable::class);
+     $datatable->buildDatatable();
 
-         if ($table->isCallback()) {
-             return $table->getResponse();
-         }
+     if ($isAjax) {
+         $responseService = $this->get('sg_datatables.response');
+         $responseService->setDatatable($datatable);
+         $datatableQueryBuilder = $responseService->getDatatableQueryBuilder();
+         //$qb->leftJoin('App\Entity\Gigs', Doctrine\ORM\Query\Lexer::T_WITH, null, 'g.id = category.id', null);
 
-     return $this->render('admin/category_list.html.twig', [
+         return $responseService->getResponse();
+     }
+
+     return $this->render('admin/category_list.html.twig', array(
          'name'=>'Category',
          'class'=>'category',
-         'datatable' => $table,
-     ]);
+         'datatable' => $datatable,
+     ));
    }
    /**
     * @Route("/new", name="category_new", methods="GET|POST")

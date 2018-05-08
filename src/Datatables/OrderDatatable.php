@@ -19,13 +19,17 @@ class OrderDatatable extends AbstractDatatable
         $this->language->set(array(
             'cdn_language_by_locale' => true,
         ));
-        $this->ajax->set(array());
-        $this->options->set(array(
+        $this->ajax->set([]);
+        $this->options->set([
             'classes' => Style::BOOTSTRAP_3_STYLE,
             'individual_filtering' => true,
             'individual_filtering_position' => 'head',
             'order_cells_top' => true,
-        ));
+            'scroll_collapse' => false,
+            'renderer' => '',
+            'individual_filtering_position' => 'head',
+            'dom' => 'lfrtip'
+        ]);
         $this->features->set(array());
         $this->columnBuilder
             ->add('name', Column::class, array(

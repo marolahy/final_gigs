@@ -4,12 +4,23 @@ use Sg\DatatablesBundle\Datatable\AbstractDatatable;
 use Sg\DatatablesBundle\Datatable\Style;
 use Sg\DatatablesBundle\Datatable\Column\Column;
 use Sg\DatatablesBundle\Datatable\Column\ActionColumn;
+use Sg\DatatablesBundle\Datatable\Column\ImageColumn;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 /**
  * Class OrderDatatable
  */
 class GigsDatatable extends AbstractDatatable
 {
+    /**
+     * Get data.
+     *
+     * @return null|string
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
 
     /**
      * {@inheritdoc}
@@ -44,7 +55,7 @@ class GigsDatatable extends AbstractDatatable
                 'end_html' => '</div>',
                 'actions' => array(
                   array(
-                    'route' => 'order_view',
+                    'route' => 'gigs_show',
                     'route_parameters' => array(
                         'id' => 'id',
                     ),
@@ -60,12 +71,12 @@ class GigsDatatable extends AbstractDatatable
                   ),
               ),
               array(
-                'route' => 'order_view',
+                'route' => 'gigs_edit',
                 'route_parameters' => array(
                     'id' => 'id',
                 ),
-              'icon' => 'glyphicon glyphicon-eye-open',
-              'label' => 'Update',
+              'icon' => 'glyphicon glyphicon-edit',
+              'label' => 'Edit',
               'confirm' => true,
               'confirm_message' => 'Are you sure?',
               'attributes' => array(
@@ -76,11 +87,11 @@ class GigsDatatable extends AbstractDatatable
               ),
           ),
           array(
-            'route' => 'order_view',
+            'route' => 'gigs_delete',
             'route_parameters' => array(
                 'id' => 'id',
             ),
-          'icon' => 'glyphicon glyphicon-eye-open',
+          'icon' => 'glyphicon glyphicon-trash',
           'label' => 'Delete',
           'confirm' => true,
           'confirm_message' => 'Are you sure?',

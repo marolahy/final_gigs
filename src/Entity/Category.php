@@ -36,19 +36,6 @@ class Category
 
 
 
-    protected $countGigs;
-
-
-    public function getCountGigs()
-    {
-        return $this->countGigs;
-    }
-
-    public function setCountGigs($countGigs)
-    {
-        $this->countGigs = $countGigs;
-    }
-
 
     public function __construct() {
         $this->gigs = new ArrayCollection();
