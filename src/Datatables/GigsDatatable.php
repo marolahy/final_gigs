@@ -27,6 +27,7 @@ class GigsDatatable extends AbstractDatatable
      */
     public function buildDatatable(array $options = array())
     {
+        $url = $this->router->generate('index',[]);
         $this->language->set(array(
             'cdn_language_by_locale' => true,
         ));
@@ -45,6 +46,10 @@ class GigsDatatable extends AbstractDatatable
             ))
             ->add('price', Column::class, array(
                 'title' => 'Price',
+            ))
+            ->add('background_image', Column::class, array(
+                'title' => 'Background',
+                'dql' => "CONCAT('<div class=\"thumbnail\"><img src=\"".$url."images/gigs/',gigs.id,'/',gigs.background_image,'\" /></div>')"
             ))
             ->add('featured', Column::class, array(
                 'title' => 'Featured',
