@@ -1,4 +1,3 @@
-
 body,
 html {
   width: 100%;
@@ -723,6 +722,40 @@ header.masthead p.pepper-title {
 }
 .purchase-container {
   margin-top:20px;
+}
+
+.thank-you {
+  background: #1a2b32 url("../img/bg-thanks.jpg");
+  background-size: cover;
+  min-height: calc(100vh - 283px);
+  color: #FFF;
+  display: flex;
+}
+
+.thank-you .inner {
+  margin: auto;
+  text-align: center;
+}
+
+.thank-you .inner h1 {
+  margin-bottom: 1em;
+  font-weight: 700;
+}
+
+.thank-you .inner h1 span {
+  display: block;
+  color: #f05255;
+}
+
+.thank-you .btn {
+  background:#f05354;
+  color:#ffffff;
+  font-size: 1em;
+  font-weight:700;
+  padding: 20px 30px;
+  border-radius:0;
+  margin: 20px auto;
+  display: inline-block;
 }
 
 @media (max-width: 1024px) {

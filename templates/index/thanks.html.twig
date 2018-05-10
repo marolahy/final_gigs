@@ -1,5 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>Thank You</h1>
-
+<section class="thank-you">
+    <div class="inner">
+        <h1>Thank you for the purchase of our gig
+            <span class="gig-name">Twitter Growth</span></h1>
+        <p>A member from our team will contact you shortly!</p>
+        <p><a href="{{path('index')}}" class="btn">back to homepage</a></p>
+    </div>
+</section>
 {% endblock %}
