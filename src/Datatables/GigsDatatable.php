@@ -12,6 +12,21 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  */
 class GigsDatatable extends AbstractDatatable
 {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getLineFormatter()
+  {
+      $url = $this->router->generate('index',[]);
+      $formatter = function($row) use ($url) {
+           $row['background_image'] = "<div class=\"thumbnail\"><img src=\"".$url."images/gigs/$row[id]/$row[background_image]\" /></div>";
+
+          return $row;
+      };
+
+      return $formatter;
+  }
     /**
      * Get data.
      *
@@ -27,7 +42,7 @@ class GigsDatatable extends AbstractDatatable
      */
     public function buildDatatable(array $options = array())
     {
-        $url = $this->router->generate('index',[]);
+
         $this->language->set(array(
             'cdn_language_by_locale' => true,
         ));
@@ -48,8 +63,7 @@ class GigsDatatable extends AbstractDatatable
                 'title' => 'Price',
             ))
             ->add('background_image', Column::class, array(
-                'title' => 'Background',
-                'dql' => "CONCAT('<div class=\"thumbnail\"><img src=\"".$url."images/gigs/',gigs.id,'/',gigs.background_image,'\" /></div>')"
+                'title' => 'Background'
             ))
             ->add('featured', Column::class, array(
                 'title' => 'Featured',
