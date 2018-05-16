@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section id="partner-head">
+        <p class="text-faded pepper-title">PEPPERWEB GIGS</p>
+        <h1>
+            <strong>Become a <span>Partner</span></strong>
+        </h1>
+        <p class="text-faded mb-5 masthead-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </section>
+
+    <section id="partner-step">
+        <div class="inner">
+            <div class="row same-height">
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Step 1</div>
+                        <div class="faq-inner-body ">
+                            <div class="step-1">
+                                <h4>Lorem Ipsum</h4>
+                                <p>Fill in the form above. We'll get back to you within 2 working days with a response.</p>
+                                <p>If we don't believe your service is the right fit, we'll let you know.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Step 2</div>
+                        <div class="faq-inner-body">
+                            <div class="step-2">
+                            <h4>Lorem Ipsum</h4>
+                            <p>If we believe your service will fit Growthstore, we'll work with you to integrate it into the website, and gather all the necessary information from you so that we can create the project page.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Step 3</div>
+                        <div class="faq-inner-body">
+                            <div class="step-3">
+                            <h4>Lorem Ipsum</h4>
+                            <p>Each time someone orders the project, you'll receiving 100% of your fee (minus any charges from our payment processor) and you can begin working. We'll maintain regular contact to ensure that everything is going smoothly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us">
+        <div class="inner">
+            <h1>Grow your business by working with us</h1>
+            <form class="row" id="contact-form">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-1.png" /></div>
+                            <span>YOUR NAME</span>
+                        </div>
+                        <input type="text" placeholder="Enter your full name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-3.png" /></div>
+                            <span>COMPANY NAME</span>
+                        </div>
+                        <input type="text" placeholder="Enter your company name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-2.png" /></div>
+                            <span>YOUR EMAIL</span>
+                        </div>
+                        <input type="text" placeholder="Enter your email" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-6.png" /></div>
+                            <span>SERVICE CATEGORY</span>
+                        </div>
+                        <div class="form-control selectpicker">
+                            <select  id="request" class="form-control ui">
+                                <option>Choose service category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-5.png" /></div>
+                            <span>DESCRIBE YOUR SERVICE</span>
+                        </div>
+                        <textarea placeholder="Briefly describe the services that you offer" class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-7.png" /></div>
+                            <span>PORTFOLIO/WORK EXAMPLES (MUST BE YOURS)</span>
+                        </div>
+                        <input type="text" placeholder="e,g, website link, video link..." class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-8.png" /></div>
+                            <span>EXPLAIN PRICING</span>
+                        </div>
+                        <input type="text" placeholder="e.g. $200/month, $1,000 one-time fee..." class="form-control" />
+                    </div>
+                    <input type="submit"  id="submit-contact" value="get in touch">
+                </div>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}

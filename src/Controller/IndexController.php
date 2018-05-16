@@ -150,4 +150,17 @@ class IndexController extends Controller
               'body_class' => 'contact-page'
             ]);
         }
+        /**
+         *
+         * @param String orderNumber
+         * @return array
+         *
+         * @Route("/become-partner", name="become_partner")
+         */
+        public function becomePartner()
+        {
+            return $this->render('index/become-partner.html.twig', [
+                'body_class' => 'become-partner'
+            ]);
+        }
 }

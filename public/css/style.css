@@ -766,22 +766,23 @@ header.masthead p.pepper-title {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 12rem 0 4rem;
 }
-#contact-head p.pepper-title{
+#contact-head p.pepper-title,#partner-head p.pepper-title{
   font-weight: 700;
   color: #ffffff;
   font-size: 1.2rem;
   letter-spacing: 5px;
   margin-bottom: 1rem;
 }
-#contact-head h1{
+#contact-head h1,#partner-head h1{
   font-size: 5rem;
 }
-#contact-head h1 span{
+#contact-head h1 span,#partner-head h1 span{
   color: #f05354;
 }
-#contact-head p.masthead-text{
-  font-weight: 300;
+#contact-head p.masthead-text,#partner-head p.masthead-text{
+  font-weight: 500;
   font-size: 24px;
   color: #ffffff;
 }
@@ -795,7 +796,6 @@ section.contact-us .inner h1{
   font-weight: 700;
   color: #36474f;
   font-size: 1.5rem;
-  letter-spacing: 3px;
   text-align: center;
   margin-bottom: 2.5rem;
 }
@@ -987,6 +987,49 @@ section.contact-us .form-group .form-control.selectpicker select{
 #partenaire-contact .btn:hover{
   background: #1a2b32;
   transition: all 0.3s linear;
+}
+body.contact-page .fixed-top,body.become-partner .fixed-top{
+  background-color: #fff !important;
+}
+body.contact-page #mainNav .navbar-nav > li.nav-item > a.nav-link,body.become-partner #mainNav .navbar-nav > li.nav-item > a.nav-link{
+  color: #36374b !important;
+}
+body.contact-page #mainNav .navbar-nav > li.nav-item > a.nav-link:hover,body.become-partner #mainNav .navbar-nav > li.nav-item > a.nav-link:hover{
+  color: #f05354 !important;
+}
+body.contact-page #mainNav .navbar-brand,body.become-partner #mainNav .navbar-brand{
+  color: #36374b !important;
+}
+#partner-head {
+  background: url(../img/bg-partner-become.jpg);
+  background-size: cover;
+  min-height: 40%;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 12rem 0 4rem;
+}
+#partner-step{
+  background: #f3f4f4;
+  padding: 4rem 0;
+}
+#partner-step .inner{
+  width: 90%;
+  margin: auto;
+}
+#partner-step .faq-inner{
+  box-shadow: 0 0 16px rgba(0,0,0,0.1);
+}
+#partner-step .faq-inner-body h4{
+  margin-bottom: 2rem;
+}
+.faq-inner-body .step-1{background: url("../img/step-1.png") no-repeat;}
+.faq-inner-body .step-2{background: url("../img/step-2.png") no-repeat;}
+.faq-inner-body .step-3{background: url("../img/step-3.png") no-repeat;}
+body.become-partner #submit-contact{
+  margin-top: 3.2rem;
 }
 @media (max-width: 1024px) {
   .inner-masthead .btn {
