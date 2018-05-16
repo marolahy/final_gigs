@@ -1,0 +1,148 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section id="contact-head">
+        <p class="text-faded pepper-title">PEPPERWEB GIGS</p>
+        <h1>
+            <strong><span>Contact</span> Us</strong>
+        </h1>
+        <p class="text-faded mb-5 masthead-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </section>
+
+    <section class="contact-us">
+        <div class="inner">
+            <h1>Have a question, proposal or request?</h1>
+            <form class="row" id="contact-form">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-1.png" /></div>
+                            <span>YOUR NAME</span>
+                        </div>
+                        <input type="text" placeholder="Enter your full name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-3.png" /></div>
+                            <span>COMPANY NAME</span>
+                        </div>
+                        <input type="text" placeholder="Enter your company name" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-2.png" /></div>
+                            <span>YOUR EMAIL</span>
+                        </div>
+                        <input type="text" placeholder="Enter your email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-4.png" /></div>
+                            <span>TYPE OF REQUEST</span>
+                        </div>
+                        <div class="form-control selectpicker">
+                            <select  id="request" class="form-control ui">
+                                <option>Choose the type of request</option>
+                                <option>Type of request 1</option>
+                                <option>Type of request 2</option>
+                                <option>Type of request 3</option>
+                                <option>Type of request 4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="label">
+                            <div class="icon-c"><img src="{{path('index')}}/img/icon-contact-5.png" /></div>
+                            <span>YOUR MESSAGE</span>
+                        </div>
+                        <textarea placeholder="Write your message here" class="form-control"></textarea>
+                    </div>
+                    <input type="submit"  id="submit-contact" value="get in touch">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section id="foir-question">
+        <div class="inner">
+            <h1>Frequently Asked Questions</h1>
+            <div class="row same-height">
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Question 1</div>
+                        <div class="faq-inner-body">
+                            <h4>How do I purchase a gig?</h4>
+                            <p>It's super simple! Find the gig you'd like to purchase, navigate to the gig's page and then click the 'Purchase' button. We'll ask a few questions to ensure that we can tailor the gig to you, and then you'll be able to complete payment.
+                            </p>
+                            <p>Shortly after, your personal account manager will reach out to let you know that work has begun.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Question 2</div>
+                        <div class="faq-inner-body">
+                            <h4>How do I know you're working on my gig?</h4>
+                            <p>If we believe your service will fit Growthstore, we'll work with you to integrate it into the website, and gather all the necessary information from you so that we can create the project page.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Question 3</div>
+                        <div class="faq-inner-body">
+                            <h4>What's your refund policy?</h4>
+                            <p>If you're unhappy with the quality of service you have received, we'd be happy to offer a full moneyback refund within 30 days of purchase.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Question 4</div>
+                        <div class="faq-inner-body">
+                            <h4>Can I sell my services through Growthstore?</h4>
+                            <p>Yes! Please get in touch via our <a href="#">Become a Partner</a> page. We work with many different experts and we're always looking for more.</p>
+                            <p>Be creative with your services and you're more likely to be accepted.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Question 5</div>
+                        <div class="faq-inner-body">
+                            <h4>Who is working on my gig?</h4>
+                            <p>We partner with experts that can reliably deliver quality results in their respective fields.</p>
+                            <p>Each expert undergoes a vetting procedure to ensure that they're up-to-par. When you work with Growthstore, you can rest assured that we've already selected the best of the best.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="faq-inner">
+                        <div class="faq-item-head">Question 6</div>
+                        <div class="faq-inner-body">
+                            <h4>I'm not sure where to start</h4>
+                            <p>If you're unsure where to start, feel free to reach out and we can advise you.</p>
+                            <p>Optionally, you can purchase your own growth advisor who will be on-demand via email to guide you and your startup.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partenaire-contact">
+        <div class="row">
+            <div class="col-sm-8">
+                <p class="text-faded pepper-title">GROW WITH US</p>
+                <p class="text-1">Sell your services through <a href="#">Pepperweb Growth Store</a></p>
+                <p class="text-2">Work with <a href="#">Pepperweb Growth Store</a> to provide your services &amp; take home 100% of your fee.</p>
+            </div>
+            <div class="col-sm-4">
+                <a class="d-inline-flex btn" href="#">BECOME A PARTNER</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

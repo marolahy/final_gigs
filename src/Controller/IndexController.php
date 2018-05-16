@@ -137,5 +137,16 @@ class IndexController extends Controller
            ]);
         }
 
-
+        /**
+         *
+         * @param String orderNumber
+         * @return array
+         *
+         * @Route("/contact-us", name="contact_us")
+         */
+        public function contactUs()
+        {
+            return $this->render('index/contact.html.twig', [
+            ]);
+        }
 }
