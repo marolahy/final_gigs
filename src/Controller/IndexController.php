@@ -147,6 +147,7 @@ class IndexController extends Controller
         public function contactUs()
         {
             return $this->render('index/contact.html.twig', [
+              'body_class' => 'contact-page'
             ]);
         }
 }
