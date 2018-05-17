@@ -625,10 +625,14 @@ header.masthead p.pepper-title {
   position:relative;
   padding:50px 40px 30px 40px;
   min-height:300px;
+  width: 100%;
 }
 .gigs-purchase-blocs-item img {
   position:absolute;
   left:30px;
+}
+.gigs-purchase-blocs-item h3{
+  margin-left:35px;
 }
 .gigs-purchase-blocs-item .purchase {
   background:#36474f;
@@ -723,7 +727,9 @@ header.masthead p.pepper-title {
 .purchase-container {
   margin-top:20px;
 }
-
+.purchase-container > div {
+  display: flex;
+}
 .thank-you {
   background: #1a2b32 url("../img/bg-thanks.jpg");
   background-size: cover;
