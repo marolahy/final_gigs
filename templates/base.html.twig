@@ -3,6 +3,7 @@
     <head manifest="index.appcache">
         <meta charset="UTF-8">
         <!-- Bootstrap core CSS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{path('index')}}vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom fonts for this template -->
@@ -13,10 +14,10 @@
 
         <!-- Plugin CSS -->
         <link href="{{path('index')}}vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
-        <link href="{{path('index')}}css/style.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
         <title>{% block title %}Pepperweb Gigs{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
+        <link href="{{path('index')}}css/style.css" rel="stylesheet">
     </head>
     <body id="page-top" class="{{body_class | default("")}}">
 

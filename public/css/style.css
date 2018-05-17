@@ -1,5 +1,4 @@
-body,
-html {
+body, html {
   width: 100%;
   height: 100%;
 }
@@ -1037,7 +1036,13 @@ body.contact-page #mainNav .navbar-brand,body.become-partner #mainNav .navbar-br
 body.become-partner #submit-contact{
   margin-top: 3.2rem;
 }
-@media (max-width: 1024px) {
+.filter{
+  display: flex;
+}
+.pagerfanta{
+  display: none;
+}
+@media only screen and (max-width: 1024px) {
   .inner-masthead .btn {
     padding:20px 40px;
   }
@@ -1049,10 +1054,10 @@ body.become-partner #submit-contact{
   }
   #partner .p-5, #featured .p-5, #more .p-5, #partner.p-5, #inner-content .p-5 {
     padding:1rem !important;
-  }  
+  }
   .gigs-purchase-blocs-item {
     min-height:450px;
-  } 
+  }
   #featured .nav a, #more .nav a {
     font-size:12px;
   }
@@ -1062,11 +1067,68 @@ body.become-partner #submit-contact{
   #checkout .gigs-purchase-blocs-item {
     min-height:365px;
   }
+  #contact-head h1, #partner-head h1 {
+    font-size: 40px;
+    text-align: center;
+  }
+  #contact-head p.pepper-title, #partner-head p.pepper-title{
+    font-size: 14px;
+  }
+  #contact-head p.masthead-text, #partner-head p.masthead-text {
+    font-size: 14px;
+    text-align: center;
+    padding: 0 15px;
+  }
+  #partner-step{
+    padding: 1rem 0;
+  }
+  section.contact-us .inner h1{
+    font-size: 20px;
+  }
+  #submit-contact {
+    height: 60px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  body.become-partner #submit-contact{
+    margin-top: 20px;
+  }
+  #foir-question .inner > h1{
+    font-size: 20px;
+  }
+  #partenaire-contact .pepper-title{
+    text-align: center;
+    font-size: 18px;
+  }
+  #partenaire-contact .text-1{
+    text-align: center;
+    font-size: 24px;
+  }
+  #partenaire-contact .text-1 a{
+    font-size: 24px;
+  }
+  #partenaire-contact .text-2{
+    font-size: 18px;
+    text-align: center;
+  }
+  #partenaire-contact .btn {
+    color: #fff;
+    background: #f05354;
+    border-radius: 0;
+    font-size: 16px;
+    padding: 15px;
+    float: none;
+    outline: none;
+    width: 220px;
+    text-align: center;
+    margin: 1rem auto 0;
+    display: block !important;
+  }
 }
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   #mainNav .navbar-brand {
     color:#36474f;
-  }  
+  }
   .featured-header {
     justify-content: space-between !important;
   }
@@ -1075,33 +1137,31 @@ body.become-partner #submit-contact{
   }
   #partner .p-5, #featured .p-5, #more .p-5, #partner.p-5, #inner-content .p-5 {
     padding:1rem !important;
-  }  
+  }
   #partner .text-1, #partner .text-1 a {
-      font-size:2rem; 
-  }  
+    font-size:2rem;
+  }
   #partner p.pepper-title {
     font-size:1.2rem;
   }
   .featured-bloc {
-    min-height:290px;
+    min-height: 290px;
   }
   .navbar-nav .nav-item {
     text-align:center;
-  } 
-  
+  }
   #mainNav .show .navbar-nav > li.nav-item > a.nav-link, #mainNav .show .navbar-nav > li.nav-item > a.nav-link:focus {
     color:#36474f;
   }
-
   .masthead-center {
     text-align:center !important;
-  }  
+  }
   .inner-masthead h1 {
-    font-size:60px;
-  }  
+    font-size:40px;
+  }
   .inner-masthead p {
     font-size:24px;
-  }  
+  }
   .inner-masthead .btn {
     padding:20px 60px;
   }
@@ -1113,7 +1173,7 @@ body.become-partner #submit-contact{
     margin:2rem auto;
     padding: 20px 10px 20px 10px;
     min-height:330px;
-  }  
+  }
   .gigs-purchase-blocs-item img {
     position:static;
   }
@@ -1121,9 +1181,8 @@ body.become-partner #submit-contact{
     font-size:24px;
     margin-top:30px;
   }
-
 }
-@media (max-width: 575px) {
+@media only screen and (max-width : 575px) {
   #partner .btn, .inner-masthead .btn {
     padding:.5rem 2rem;
     font-size:1rem;
@@ -1135,7 +1194,12 @@ body.become-partner #submit-contact{
     padding:1rem !important;
   }
   #featured h2, #more h2 {
-    font-size:1.4rem;
+    font-size:1rem;
+  }
+  .currency-box{
+    padding: 0;
+    position: relative;
+    top: -2px;
   }
   #featured select {
     font-size:12px;
@@ -1143,6 +1207,24 @@ body.become-partner #submit-contact{
   #featured .nav {
     display:flex;
     justify-content:center !important;
+  }
+  #featured .nav a, #more .nav a {
+    font-size: 10px;
+  }
+  #footer ul.d-flex.justify-content-center{
+    flex-direction: column;
+  }
+  #footer ul.d-flex.justify-content-center li{
+    margin: 5px !important;
+  }
+  .copy{
+    text-align: center;
+  }
+  .featured-stock {
+    bottom: 1rem;
+  }
+  #footer ul.d-flex.justify-content-center li a{
+    font-size: 11px;
   }
   #featured .featured-header {
     justify-content:space-between !important;
@@ -1168,7 +1250,10 @@ body.become-partner #submit-contact{
     color:#36474f;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link, #mainNav .navbar-nav > li.nav-item > a.nav-link:focus {
-    color:#36474f;
+    color:#36474f !important;
+  }
+  #navbarResponsive .navbar-nav {
+    padding-top: .5rem;
   }
   .navbar-nav .nav-item {
     text-align:center;
@@ -1179,7 +1264,7 @@ body.become-partner #submit-contact{
   }
   .gigs-purchase-blocs-item {
     width:100%;
-    margin:2rem auto;
+    margin:1rem auto;
   }
   .gigs-purchase-blocs-item img {
     position:static;
@@ -1190,7 +1275,7 @@ body.become-partner #submit-contact{
   }
   .gigs-purchase-blocs-item .purchase {
     padding:10px 30px;
-  }  
+  }
   .masthead-center {
     text-align:center !important;
   }
@@ -1210,5 +1295,34 @@ body.become-partner #submit-contact{
     font-size:18px;
     font-weight:700;
   }
-
+  #navbarResponsive .navbar-nav > li.nav-item > a.nav-link, #navbarResponsive .navbar-nav > li.nav-item > a.nav-link:focus{
+    color: #36474f;
+  }
+  #footer {
+    background: #1a2b32;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  #myCarousel{
+    margin-bottom: 1rem;
+  }
+  #inner-content .category {
+    font-size: 12px;
+    margin: .5rem 0;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1199px){
+  #partenaire-contact .btn {
+    color: #fff;
+    background: #f05354;
+    border-radius: 0;
+    font-size: 16px;
+    padding: 15px;
+    float: none;
+    outline: none;
+    width: 220px;
+    text-align: center;
+    margin: 1rem auto 0;
+    display: block !important;
+  }
 }
