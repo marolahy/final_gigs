@@ -1042,6 +1042,24 @@ body.become-partner #submit-contact{
 .pagerfanta{
   display: none;
 }
+#footer ul.social-icons li a{
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 37px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 100;
+  transition: all .3s;
+}
+#footer ul.social-icons li a:hover{
+  color:#f05354;
+  border: 2px solid #f05354;
+  transition: all .3s;
+}
 @media only screen and (max-width: 1024px) {
   .inner-masthead .btn {
     padding:20px 40px;
